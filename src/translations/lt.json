@@ -1,0 +1,262 @@
+{
+    "choose": "Pasirinkite",
+    "error_form":{
+      "error":"Klaida",
+      "message":"Kažkas nutiko. Pabandykite dar kartą vėliau",
+      "try_again":"Bandyk iš naujo",
+      "to_come_back":"Grįžti"
+    },
+    "edit_order_form":{
+      "edit":"Redaguoti",
+      "cancel":"Atšaukti",
+      "save_changes":"Išsaugoti pakeitimus"
+    },
+    "filter_form":{
+      "not_selected":"Nepasirinkta",
+      "filter":"Filtras",
+      "reset":"Nustatyti iš naujo",
+      "customize_options":"Nustatymų keitimas",
+      "period":"Laikotarpis",
+      "since_when":"Nuo kada",
+      "choose":"Pasirinkite...",
+      "till_when":"Iki kada",
+      "hide_calendar":"Slėpti kalendorių",
+      "orders_placed_by":"Užsakymai pateikti",
+      "object":"Objektas"
+    },
+    "home":{
+      "order_tracking":"Užsakymo sekimas",
+      "orders_in_progress":"Vykdomi užsakymai",
+      "pending_orders":"Laukiami užsakymai",
+      "order_history":"Užsakymų Istorija",
+      "orders_fulfilled":"Užsakymai įvykdyti",
+      "contacts":"Kontaktai",
+      "new_orders":"Nauji užsakymai"
+    },
+    "locationselector":{
+      "confirmAddressDrawer":{
+      "cancel":"Atšaukti",
+      "confirm":"Patvirtinti"
+      }
+    },
+    "login":{
+      "welcome_back":"Sveiki sugrįžę!",
+      "log_in":"Prisijungti",
+      "invalid_user":"Neteisingas vartotojo vardas arba slaptažodis. Bandykite dar kartą.",
+      "user_not_activated":"Naudotojo paskyra nebuvo aktyvuota, patikrinkite el. paštą",
+      "thank_you":"Dėkojame kad prisijungėte prie mūsų!",
+      "must_activate": "Paskyrą galite aktyvuoti laiške kurį gavote savo el. pašte.",
+      "problem_occurred":"Įvyko problema, bandykite dar kartą.",
+      "register_alert":"Kai jūsų paskyra bus patvirtinta, tik tada galėsite prisijungti",
+      "email_sent_alert":"Laiškas bus išsiųstas į jūsų el. paštą. Paspauskite nuorodą kad pakeisti slaptažodį.",
+      "email_sent_alert2":"Jeigu nerasite, patikrinkite 'Šlamštas' arba kitus aplankus",
+      "forgot_password":"Pamiršau slaptažodį",
+      "forgot_password_header":"Įveskite savo paskyros el. paštą",
+      "contacts":"Kontaktai",
+      "email":"El. paštas",
+      "password":"Slaptažodis",
+      "login":"Prisijungti",
+      "register":"Registruotis",
+      "select_region": "Pasirinkite regioną",
+      "select_language":"Pasirinkite kalbą",
+      "no_region":"Pasirinkite regioną",
+      "ok":"GERAI",
+      "submit":"PATEIKTI"
+    },
+    "register":{
+      "invalid_user":"Paskyra nesukurta. Įsitikinkite, kad informacija yra teisingai suvesta.",
+      "invalid_email":"El. Paštas neatitinka struktūros.",
+      "invalid_phone":"Įveskite tinkamą telefono numerį kuris prasidėtu su '+' ir turėtu ne mažiau kaip 10 skaitmenų.",
+      "invalid_password":"Slaptažodis privalo susidaryti iš mažiausiai 8 raidžių, privalo turėti bent vieną didžiają raidę ir skaičių.",
+      "user_exists":"Toks naudotojas jau egzistuoja, naudokite kita el. paštą.",
+      "user_doesnt_exist":"Toks naudotojas neegzistuoja, naudokite kita el. paštą.",
+      "password_rules":"Privalo susidaryti iš ne mažiau kaip 8 raidžių, vienos didžiosios ir vieno skaičiaus",
+      "passwords_dont_match":"Slaptažodžiai nesutampa, bandykite dar kartą",
+      "agree_to_terms":"Turite sutikti sąlygomis",
+      "problem_occurred":"Įvyko problema, bandykite dar kartą.",
+      "created_successfully":"Paskyra sėkmingai sukurta. Sveikiname prisijungus prie mūsų!",
+      "repeat_password":"Pakartoti slaptažodį.",
+      "no_internet":"Įrenginys neprijungtas prie interneto, prašome patikrinti ir bandyti registruotis dar kartą.",
+      "name_required":"Privaloma užpildyti vardo ir pavardės laukelį.",
+      "password_required":"Privaloma įvesti slaptažodį.",
+      "second_password_required":"Privaloma pakartotinai įvesti slaptažodį.",
+      "email_required":"Privaloma įvesti elektroninį pašto adresą.",
+      "phone_required":"Privaloma įvesti telefono numerį.",
+      "company_code_required":"Privaloma įvesti įmonės kodą.",
+      "adress_required":"Privaloma įvesti adresą.",
+      "company_required":"Privaloma įvesti įmonės pavadinimą.",
+      "contacts":"Kontaktai",
+      "name":"Vardas Pavardė",
+      "phone":"Telefono numeris",
+      "email":"El. paštas",
+      "tax":"PVM Kodas",
+      "personal_code":"Asmens kodas",
+      "company_code":"Įmonės kodas",
+      "company":"Įmonės pavadinimas",
+      "address":"Adresas",
+      "register":"Registruotis",
+      "company_type":"Įmonė/Individuali veikla",
+      "eula":"Perskaičiau ir sutinku su sąlygomis ",
+      "terms":"sąlygomis ir taisyklėmis",
+      "termsBox": "Sąlygos ir taisyklės",
+      "conditions":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et,"
+    },
+    "new_order_form":{
+      "add":"Pridėti naują užsakymą",
+      "confirm":"Patvirtinti",
+      "use_new_form":{
+      "earliest_time":"Ankstyviausias įmanomas laikas",
+      "latest_time":"Vėliausias įmanomas laikas"
+      }
+    },
+    "new_preview_order_form":{
+      "order":"Įsakymas",
+      "confirm":"Patvirtinti",
+      "obj":"Obj.",
+      "location":"Vieta",
+      "brand":"Prekės ženklas",
+      "quantity":"Kiekis",
+      "date":"Data",
+      "start":"Pradėti",
+      "included":"Įskaitant",
+      "not_included":"Neįtrauktos"
+    },
+    "order_history_form":{
+      "statistics":"Statistika",
+      "no_pending_order":"Šiuo metu neturite laukiančių užsakymų.",
+      "invoice_drawer":{
+      "vat_invoice":"PVM sąskaita faktūra"
+      },
+      "invoice_history_item":{
+        "vat_invoice":"PVM sąskaita faktūra",
+        "brand":"Markės pavadinimas",
+        "quantity":"Kiekis",
+        "date":"Duomenys",
+        "start":"Pradžioje",
+        "note":"Pab."
+      },
+      "order_list_header":{
+        "order_history":"Užsakymų Istorija"
+      },
+      "waybill_drawer":{
+        "bill_of_lading":"Važtaraštis",
+        "sign_up": "Pasirašyti dokumentą",
+        "send_to_email": "Siųsti el. paštu"
+      },
+      "waybill_send_mail": {
+        "email_success": "El. laiškas sėkmingai išsiųstas",
+        "email_error": "El. laiško išsiųsti nepavyko",
+        "process_error": "Įvyko nenumatyta klaida"
+      },
+      "waybill_pdf_open": {
+        "pdf_success": "Sėkmingai atidaryta",
+        "pdf_error": "PDF nerastas",
+        "process_error": "Įvyko netikėta klaida"
+      }
+    },
+    "order_tracking_form":{
+      "order_tracking":"Užsakymo sekimas",
+      "no_orders":"Šiuo metu neturite jokių vykdomų užsakymų.",
+      "delivery_timeline_drawer":{
+         "bill_of_lading":"Važtaraštis",
+        "sign_up": "Pasirašyti dokumentą"
+      },
+      "edit_modal":{
+         "invalid_quantity":"Pasirinktas netinkamas kiekis.",
+         "edit_order_quantity":"Redaguoti užsakymo kiekį",
+         "you_can_edit":"Galite redaguoti sumą ±10% nuo pradinio užsakymo",
+         "quantity_range":"Kiekių diapazonas",
+         "cancel":"Atšaukti",
+         "save_changes":"Išsaugoti pakeitimus"
+      },
+      "ongoing_orderitem":{
+        "concrete_truck":"Betonvežis objekte.",
+        "another_concrete":"Netrukus atvažiuos dar vienas betonvežis",
+        "brand":"Prekės ženklas",
+        "follow_on_map":"Sekite žemėlapyje",
+        "edit":"Redaguoti"
+     }
+    },
+    "pending_orders_form":{
+      "pending_orders":"Laukiami užsakymai",
+      "no_pending_order":"Šiuo metu neturite laukiančių užsakymų.",
+      "delete_order_message":"Ar tikrai norite ištrinti šį užsakymą?",
+      "confirm_to_proceed":"Šio veiksmo anuliuoti negalima. Patvirtinkite, kad tęstumėte trynimą.",
+      "cancel":"Atšaukti",
+      "delete":"Ištrinti",
+      "pending_orderitem":{
+        "brand":"Prekės ženklas",
+        "quantity":"Kiekis",
+        "date":"Duomenys",
+        "start":"Pradžioje",
+        "edit":"Redaguoti",
+        "delete":"Ištrinti"
+     }
+    },
+    "profile":{
+      "profile":"Profilis",
+      "disconnect":"Atsijungti",
+      "name":"vardas",
+      "surname":"Pavardė",
+      "email":"El. paštas",
+      "change_if_wish":"Jei norite pakeisti savo informaciją,",
+      "contact_us":"Susisiekite su mumis.",
+      "about_company":"Apie įmonę",
+      "firm":"Bendrovė",
+      "company_code":"Įmonės kodas",
+      "want_to_logout":"Ar tikrai norite atsijungti?",
+      "cancel":"Atšaukti"
+   },
+   "components":{
+      "map_type_selection":{
+        "map_type":"Žemėlapio tipas",
+        "map":"žemėlapį",
+        "satellite":"Palydova"
+      },
+      "new_orders":{
+        "orders_not_found":"Nepavyko rasti užsakymų pagal pateiktus filtrus."
+      },
+      "order_card":{
+        "for":"Užsakovas",
+        "manager":"Vadovas",
+        "delivered":"Pristatyta"
+     },
+     "interval_selection":{
+      "arrange_by_phone":"Derinti telefonu",
+       "who":"Mašiną iškrauti kas"
+     },
+     "object_selection":{
+      "object_name":"Objekto pavadinimas",
+      "no_object_found":"Nepavyko rasti objektų."
+    },
+    "brand_name":"Markės pavadinimas",
+    "no_brands_found":"Nepavyko rasti markių."
+   },
+
+   "order_form":{
+    "place":"Vieta",
+    "start_of_execution":"Pradedame Vykdymo",
+    "own_transport":"Nuosavas transportas",
+    "delivery_intervals":"Pristatymo intervalai",
+    "why_hydraulic":"Su hidraulinis latakas",
+    "vacuum_cleaner":"Siurblys",
+    "payment_bank":"Mokėkite dabar per banką (Paysera)",
+    "payment_invoice":"Išankstinė sąskaita faktūra",
+    "slump_class":"Slankumo klasė",
+    "strength_class":"Stiprumo klasė",
+    "add_a_comment":"Pridėti komentarą",
+    "comment":"Komentuoti"
+  },
+  "signing_pill":{
+    "signed":"Pasirašyta",
+    "signature_required":"Reikalingas parašas"
+  },
+  "filter_provider":{
+    "everyone":"Visi",
+    "this_month":"Šį mėnesį",
+    "last_month":"Praeitą mėnesį",
+    "choose_a_ate":"Pasirinkti duomenys"
+  }
+  
+  }
+  

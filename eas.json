@@ -1,0 +1,44 @@
+{
+  "cli": {
+    "version": ">= 3.7.2",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "development": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "buildConfiguration": "Debug",
+        "resourceClass": "m1-medium"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1-medium"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "app-bundle",
+        "withoutCredentials": false,
+        "cache": {
+          "disabled": true
+        },
+        "ndk": "26.1.10909125"
+      },
+      "ios": {
+        "resourceClass": "m1-medium"
+      },
+      "env": {
+        "NODE_OPTIONS": "--max-old-space-size=4096"
+      },
+      "autoIncrement": false
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

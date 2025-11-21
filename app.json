@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "BetonPro",
+    "slug": "betonpro",
+    "owner": "tinysolutions",
+    "version": "0.0.51",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#151F36"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "eu.tinysolutions.betonpro",
+      "supportsTablet": true
+    },
+    "android": {
+      "versionCode": 58,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDHKzM9Y6PUQzqSF8XojzADiqa-Xq4thC0"
+        }
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "eu.tinysolutions.betonpro"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cdfa605a-b9f2-410d-b848-43d5a7f8ccee"
+      }
+    }
+  }
+}

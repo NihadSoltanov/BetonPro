@@ -1,0 +1,6 @@
+const PENDING_ORDER_STATUS = {
+  APPROVED: 0,
+  PENDING: -1,
+};
+
+export {PENDING_ORDER_STATUS};

@@ -1,0 +1,262 @@
+{
+  "choose": "Lūdzu izvēlieties",
+  "error_form":{
+    "error":"KLAIDA",
+    "message":"Kažkas nutiko. Pabandykite dar kartą vėliau",
+    "try_again":"Bandyti dar kartą",
+    "to_come_back":"Grįžti"
+  },
+  "edit_order_form":{
+    "edit":"Redaguoti",
+    "cancel":"Atšaukti",
+    "save_changes":"Išsaugoti pakeitimus"
+  },
+  "filter_form":{
+    "not_selected":"Nepasirinkta",
+    "filter":"Filtras",
+    "reset":"Nustatyti iš naujo",
+    "customize_options":"Pritaikyti pasirinkimus",
+    "period":"Laikotarpis",
+    "since_when":"Nuo kada",
+    "choose":"Pasirinkite...",
+    "till_when":"Iki kada",
+    "hide_calendar":"Slėpti kalendorių",
+    "orders_placed_by":"Užsakymai, kuriuos pateikė",
+    "object":"Objektas"
+  },
+  "home":{
+    "order_tracking":"Užsakymų sekimas",
+    "orders_in_progress":"vykdomi užsakymai",
+    "pending_orders":"Laukiantys užsakymai",
+    "order_history":"Užsakymų istorija",
+    "orders_fulfilled":"įvykdyti užsakymai",
+    "contacts":"Kontaktai",
+    "new_orders":"Nauji užsakymai"
+  },
+  "locationselector":{
+    "confirmAddressDrawer":{
+    "cancel":"Atcelt",
+    "confirm":"Apstiprināt"
+    }
+  },
+  "login":{
+    "welcome_back":"Laipni lūdzam atpakaļ!",
+    "log_in":"Piesakieties",
+    "invalid_user":"Nepareizs lietotājvārds vai parole, mēģiniet vēlreiz.",
+    "user_not_activated":"Lietotāja konts nav aktivizēts, lūdzu, pārbaudiet savu e-pastu",
+    "thank_you":"Paldies, ka pievienojāties mums!",
+    "must_activate":"Savu kontu varat aktivizēt vēstulē, ko saņēmāt savā e-pastā.",
+    "problem_occurred":"Ir problēma, lūdzu, mēģiniet vēlreiz.",
+    "register_alert":"Jūs varēsiet pieteikties, kad būsiet verificējis savu kontu.",
+    "email_sent_alert":"E-pasts tiks nosūtīts uz jūsu e-pastu. Noklikšķiniet uz saites, lai mainītu savu paroli.",
+    "email_sent_alert2":"Ja nevarat to atrast, pārbaudiet surogātpasta vai citas mapes",
+    "forgot_password":"Aizmirsu savu paroli",
+    "forgot_password_header":"Ievadiet sava konta e-pastu pasta nodaļa",
+    "contacts":"Sazinieties",
+    "email":"E-pasts",
+    "password":"Parole",
+    "login":"Piesakieties",
+    "register":"Reģistrēties",
+    "select_region": "Atlasiet reģionu",
+    "select_language":"Atlasiet valodu",
+    "no_region":"Lūdzu, izvēlieties reģionu",
+    "ok":"LABI",
+    "submit":"IESNIEGT"
+  },
+  "register":{
+    "invalid_user":"Konts nav izveidots. Pārliecinieties, vai informācija ir pareizi iestatīta.",
+    "invalid_email":"E-pasts neatbilst struktūrai.",
+    "invalid_phone":"Lūdzu, ievadiet piemērotu tālruņa numuru, kas sākas ar '+' un kurā ir vismaz 10 cipari.",
+    "invalid_password":"Parolei jābūt vismaz 8 burtu garai, tajā jābūt vismaz vienam lielajam burtam un ciparam.",
+    "user_exists":"Šis lietotājs jau pastāv, lūdzu, izmantojiet citu e-pastu.",
+    "user_doesnt_exist":"Šis lietotājs neeksistē, lūdzu, izmantojiet citu e-pastu.",
+    "passwords_dont_match":"Paroles nesakrīt, mēģiniet vēlreiz",
+    "password_rules":"Sastāv vismaz no 8 rakstzīmēm, viena lielā burta un viena cipara.",
+    "agree_to_terms":"Jums ir jāpiekrīt noteikumiem",
+    "problem_occurred":"Ir problēma, lūdzu, mēģiniet vēlreiz.",
+    "created_successfully":"Jūsu konts ir veiksmīgi izveidots. Apsveicam ar pievienošanos mums!",
+    "repeat_password":"Atkārtojiet paroli",
+    "no_internet":"Ierīce nav savienota ar internetu, lūdzu, pārbaudiet un mēģiniet reģistrēties vēlreiz.",
+    "name_required":"Vārda un uzvārda lauks ir nepieciešams.",
+    "password_required":"Nepieciešama parole.",
+    "second_password_required":"Nepieciešams atkārtoti ievadīt paroli.",
+    "email_required":"Ir nepieciešama e-pasta adrese.",
+    "phone_required":"Nepieciešams tālruņa numurs.",
+    "company_code_required":"Ir nepieciešams uzņēmuma kods.",
+    "adress_required":"Nepieciešama adrese.",
+    "company_required":"Ir nepieciešams uzņēmuma nosaukums.",
+    "contacts":"Sazinieties",
+    "name":"Nosaukums Uzvārds",
+    "phone":"Tālruņa numurs",
+    "email":"E-pasts",
+    "tax":"Nodokļa Nr",
+    "personal_code":"Personas kods",
+    "company_code":"Uzņēmuma kods",
+    "company":"Uzņēmums",
+    "address":"Adrese",
+    "register":"Reģistrēties",
+    "company_type":"Uzņēmums/Individuālas darbības",
+    "eula":"Esmu izlasījis un piekrītu ",
+    "terms":"noteikumiem un nosacījumiem",
+    "termsBox":"noteikumiem un nosacījumiem",
+    "conditions":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et. \n 1.Suspendisse mauris orci, egestas id leo molestie, euismod auctor mauris. Suspendisse potenti. Ut cursus maximus justo a accumsan. Pellentesque ex ipsum, placerat ut rutrum feugiat, egestas eget nulla. Morbi dictum quam in accumsan molestie. Fusce volutpat facilisis ex, id lobortis justo consequat non. Proin eget aliquet est. Praesent convallis magna augue, quis ornare dui laoreet quis. Nullam eget dolor hendrerit, laoreet justo et,"
+  },
+  "new_order_form":{
+    "add":"Pridėti naują užsakymą",
+    "confirm":"Patvirtinti",
+    "use_new_form":{
+    "earliest_time":"Ankščiausias įmanomas laikas",
+    "latest_time":"Vėliausias įmanomas laikas"
+    }
+  },
+  "new_preview_order_form":{
+    "order":"Užsakymas",
+    "confirm":"Patvirtinti",
+    "obj":"Obj.",
+    "location":"Viet.",
+    "brand":"Markė",
+    "quantity":"Kiekis",
+    "date":"Data",
+    "start":"Pradž.",
+    "included":"Įskaičiuota",
+    "not_included":"Neįskaičiuota"
+  },
+  "order_history_form":{
+    "statistics":"Statistika",
+    "no_pending_order":"Šiuo metu neturite įvykusių užsakymų.",
+    "invoice_drawer":{
+    "vat_invoice":"PVM Sąskaita-faktūra"
+    },
+    "invoice_history_item":{
+      "vat_invoice":"PVM Sąskaita-faktūra",
+      "brand":"Markė",
+      "quantity":"Kiekis",
+      "date":"Data",
+      "start":"Pradž.",
+      "note":"Pab."
+    },
+    "order_list_header":{
+      "order_history":"Užsakymų istorija"
+    },
+    "waybill_drawer":{
+      "bill_of_lading":"Važtaraštis",
+      "sign_up": "Parakstīt dokumentu",
+      "send_to_email": "Sūtīt uz e-pastu"
+    },
+    "waybill_send_mail": {
+      "email_success": "E-pasts veiksmīgi nosūtīts",
+      "email_error": "Neizdevās nosūtīt e-pastu",
+      "process_error": "Radās neparedzēta kļūda"
+    },
+    "waybill_pdf_open": {
+      "pdf_success": "Veiksmīgi atvērts",
+      "pdf_error": "PDF nav atrasts",
+      "process_error": "Radās negaidīta kļūda"
+    }
+
+  },
+  "order_tracking_form":{
+    "order_tracking":"Užsakymų sekimas",
+    "no_orders":"Šiuo metu neturite vykstančių užsakymų.",
+    "delivery_timeline_drawer":{
+       "bill_of_lading":"Važtaraštis",
+      "sign_up": "Parakstīt dokumentu"
+    },
+    "edit_modal":{
+       "invalid_quantity":"Pasirinktas neleistinas kiekis.",
+       "edit_order_quantity":"Redaguoti užsakymo kiekį",
+       "you_can_edit":"Galite redaguoti ±10% sumą nuo pradinio užsakymo",
+       "quantity_range":"Kiekio Diapazonas",
+       "cancel":"Atšaukti",
+       "save_changes":"Išsaugoti pakeitimus"
+    },
+    "ongoing_orderitem":{
+      "concrete_truck":"Betonvežis objekte.",
+      "another_concrete":"Kitas betonvežis atvyks už",
+      "brand":"Markė",
+      "follow_on_map":"Sekti žemėlapyje",
+      "edit":"Redaguoti"
+   }
+  },
+  "pending_orders_form":{
+    "pending_orders":"Laukiantys užsakymai",
+    "no_pending_order":"Šiuo metu neturite laukiančių užsakymų.",
+    "delete_order_message":"Ar tikrai norite ištrinti šį užsakymą",
+    "confirm_to_proceed":"Šio veiksmo anuliuoti negalima. Patvirtinkite, jei norite tęsti ištrynimą.",
+    "cancel":"Atšaukti",
+    "delete":"Ištrinti",
+    "pending_orderitem":{
+      "brand":"Markė",
+      "quantity":"Kiekis",
+      "date":"Data",
+      "start":"Pradž.",
+      "edit":"Redaguoti",
+      "delete":"Ištrinti"
+   }
+  },
+  "profile":{
+    "profile":"Profilis",
+    "disconnect":"Atsijungti",
+    "name":"Vardas",
+    "surname":"Pavardė",
+    "email":"El. paštas",
+    "change_if_wish":" Jei norite pasikeisti savo informaciją,",
+    "contact_us":"susisiekite su mumis.",
+    "about_company":"Apie įmonę",
+    "firm":"Įmonė",
+    "company_code":"Įmonės kodas",
+    "want_to_logout":"Ar tikrai norite atsijungti?",
+    "cancel":"Atšaukti"
+ },
+ "components":{
+    "map_type_selection":{
+      "map_type":"Žemėlapio tipas",
+      "map":"Žemėlapis",
+      "satellite":"Palydovas"
+    },
+    "new_orders":{
+      "orders_not_found":"Nepavyko rasti užsakymų pagal pateiktus filtrus."
+    },
+    "order_card":{
+      "for":"Užs",
+      "manager":"Vad",
+      "delivered":"Pristatyta"
+   },
+   "interval_selection":{
+    "arrange_by_phone":"Derinti telefonu",
+    "who":"Mašiną iškrauti kas"
+   },
+   "object_selection":{
+    "object_name":"Objekto pavadinimas",
+    "no_object_found":"Nepavyko rasti objektų."
+  },
+  "brand_name":"Markės pavadinimas",
+  "no_brands_found":"Nepavyko rasti markių."
+ },
+ 
+ "order_form":{
+  "place":"Vieta",
+  "start_of_execution":"Vykdymo pradžia",
+  "own_transport":"Nuosavas transportas",
+  "delivery_intervals":"Pristatymo intervalai",
+  "why_hydraulic":"Su hidrauliniu lataku",
+  "vacuum_cleaner":"Siurblys",
+  "payment_bank":"Maksājiet tūlīt, izmantojot banku (Paysera)",
+  "payment_invoice":"Pro-Forma rēķins",
+  "slump_class":"Pagrimuma klase",
+  "strength_class":"Spēka klase",
+  "add_a_comment":"Pridėti komentarą",
+  "comment":"Komentaras"
+},
+"signing_pill":{
+  "signed":"Pasirašyta",
+  "signature_required":"Reikalingas parašas"
+},
+"filter_provider":{
+  "everyone":"Visi",
+  "this_month":"Šį mėnesį",
+  "last_month":"Praėjusį mėnesį",
+  "choose_a_ate":"Pasirinkti datą"
+}
+
+}

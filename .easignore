@@ -1,0 +1,9 @@
+# büyük klasörleri dışarıda bırak
+node_modules
+.expo
+.expo-shared
+android/app/build
+ios/build
+
+# lockfile'ları YÜKLE
+!package-lock.json
