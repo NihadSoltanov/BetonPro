@@ -12,11 +12,18 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.box,
     paddingHorizontal: SPACING.xxs,
   },
+
+  unsignedPill: {
+    backgroundColor: 'red',
+    color: 'white',
+  },
+
   signingPillContainer: {
     flex: 1,
     flexDirection: 'row',
     marginVertical: SPACING.xxs,
   },
+
   signedPill: {
     opacity: 0.4,
   },

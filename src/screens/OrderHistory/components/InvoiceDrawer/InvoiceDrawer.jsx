@@ -1,3 +1,4 @@
+import API from '../../../../api/API';
 import React, {useEffect, useRef, useState} from 'react';
 import {View, Text, Animated, Easing, Pressable, AccessibilityInfo} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -7,6 +8,8 @@ import {DownloadSvg} from '../../../../assets/icons';
 import {openFileLink} from '../../../../util/FileSystemUtils';
 import {getBaseUrl, getUserName, getUserPsw} from '../../../../util/TokenUtil';
 import {useTranslate} from '../../../../hooks/useTranslate';
+import { SlumpGraphModal } from '../../../../components/SlumpGraphModal/SlumpGraphModal';
+import SlumpGraph from '../../../../components/SlumpGraphModal/SlumpGraph';
 
 const Toast = ({visible, type = 'success', title, message, onClose, topOffset = 12, onScreen = false}) => {
   const opacity = useRef(new Animated.Value(0)).current;
@@ -99,7 +102,8 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
   const {t} = useTranslate();
   const insets = useSafeAreaInsets();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [showSlump, setShowSlump] = useState(false);   // ✅ DÜZGÜN YER
+  const [slumpData, setSlumpData] = useState(null);
   const [toast, setToast] = useState({visible: false, type: 'success', title: '', message: ''});
   const hideToastTimer = useRef();
 
@@ -139,6 +143,15 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
   };
 
   useEffect(() => () => hideToastTimer.current && clearTimeout(hideToastTimer.current), []);
+    const handleOpenSlump = async () => {
+      try {
+        const result = await API.getSlumpMobile(order?.id, order?.db);
+        setSlumpData(result);
+        setShowSlump(true);
+      } catch (e) {
+        console.log("❌ Slump API error:", e);
+      }
+    };
 
   return (
     <BottomDrawerWithOverlay isVisible={isVisible} onClose={onClose}>
@@ -152,16 +165,48 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
         topOffset={Math.max(insets.top, 10) + 8}
       />
       <View style={styles.container}>
-        <View style={styles.innerContainer}>
-          <Button
-            variant="outlined"
-            label={t('order_history_form.invoice_drawer.vat_invoice')}
-            Icon={DownloadSvg}
-            onPress={() => handleDownloadInvoice(order?.invoiceId, order?.db)}
-            loading={isLoading}
-            buttonStyle={{justifyContent: 'center'}}
-          />
-        </View>
+       <View style={styles.innerContainer}>
+
+         <Button
+           variant="outlined"
+           label={t('order_history_form.invoice_drawer.vat_invoice')}
+           Icon={DownloadSvg}
+           onPress={() => handleDownloadInvoice(order?.invoiceId, order?.db)}
+           loading={isLoading}
+           buttonStyle={{justifyContent: 'center', marginBottom: 14}}
+         />
+
+        <Button
+          variant="outlined"
+          label="Slump Graph"
+          onPress={handleOpenSlump}
+          buttonStyle={{justifyContent: 'center', marginBottom: 14}}
+        />
+
+         <Button
+           variant="outlined"
+           label="Strength Graph"
+           onPress={() => {}}
+           buttonStyle={{justifyContent: 'center'}}
+         />
+            <SlumpGraphModal
+              visible={showSlump}
+              onClose={() => setShowSlump(false)}
+            >
+            {slumpData && (
+              <SlumpGraph
+                data={slumpData.predicted_points}
+                deliveryTime={slumpData.delivery_time}
+              />
+            )}
+
+            </SlumpGraphModal>
+
+
+
+
+       </View>
+
       </View>
     </BottomDrawerWithOverlay>
   );

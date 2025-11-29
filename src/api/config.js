@@ -6,6 +6,8 @@ const ENDPOINTS = {
   API_URL_LV:'https://generalis.hclv.lv/go.php?mod=cretozaurus&act=',
   API_URL_CR:'https://general.hmbetonas.lt/go.php?mod=ecocretesmart&act=',
   API_URL_HMOBILE: 'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=',
+  SLUMP_MOBILE_LT: 'https://lt-mob.hmbetonpro.eu/go.php?mod=atask_cars_detail&act=getSlumpMobile',
+
   LOGIN: 'login',
   REGISTER: 'register',
   MIXTURES_AND_PUMPS: 'getMixturesAndPumps',

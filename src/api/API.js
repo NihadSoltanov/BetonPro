@@ -29,6 +29,20 @@ const login = (data) => {
     });
 };
 
+const getSlumpMobile = async (orderId, db) => {
+  const base = ENDPOINTS.SLUMP_MOBILE_LT;
+  const url = `${base}&order_id=${orderId}&db=${db}`;
+
+  console.log("🔵 Fetch SlumpMobile:", url);
+
+  return axios
+    .get(url)
+    .then((resp) => resp.data)
+    .catch((err) => {
+      console.log("❌ Slump fetch error", err);
+      throw err;
+    });
+};
 
 const getMixturesAndPumps = () =>
   RequestType.getRequest(ENDPOINTS.MIXTURES_AND_PUMPS).then((resp) =>
@@ -264,7 +278,8 @@ const API = {
   getCoworkers,
   getGraphsData,
   getClassessData,
-  userExists
+  userExists,
+  getSlumpMobile
 };
 
 export default API;

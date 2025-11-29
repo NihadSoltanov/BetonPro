@@ -51,7 +51,10 @@ export const useNewOrderForm = () => {
     ownTransport: [],
     isHydraulicChuteRequired: [],
     comment: [],
-    object: [FormValidator.isRequired()],
+    object: session.agreement_type === 'contract'
+      ? [FormValidator.isRequired()]
+      : [],
+
     location: [FormValidator.isRequired()],
     date: [FormValidator.isRequired()],
     time: [
@@ -155,14 +158,21 @@ export const useNewOrderForm = () => {
     }
   }, [route]);
 
-  const submit = () => {
-    const errors = validateForm();
-    if (!errors) {
-      const data = JSON.stringify({formData});
-      navigation.navigate(ROUTES.NEW_ORDER_PREVIEW,{data});
-      //save in storage
-    }
-  };
+const submit = () => {
+  console.log("User type:", session.agreement_type);
+
+  const errors = validateForm();
+
+  if (errors) {
+    alert(t('new_order_form.fix_errors'));
+    console.log("FORM ERRORS:", formErrors);
+    return;
+  }
+
+  const data = JSON.stringify({formData});
+  navigation.navigate(ROUTES.NEW_ORDER_PREVIEW, { data });
+};
+
 
   return {
     formData,

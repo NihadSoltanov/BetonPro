@@ -29,7 +29,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
     }
 }
 
-rootProject.name = 'Ecocrete'
+rootProject.name = 'BetonPro'
 
 dependencyResolutionManagement {
     versionCatalogs {
