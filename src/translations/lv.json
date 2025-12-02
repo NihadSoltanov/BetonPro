@@ -55,7 +55,7 @@
     "contacts":"Sazinieties",
     "email":"E-pasts",
     "password":"Parole",
-    "login":"Piesakieties",
+    "login":"Lietotājvārds",
     "register":"Reģistrēties",
     "select_region": "Atlasiet reģionu",
     "select_language":"Atlasiet valodu",
@@ -125,7 +125,10 @@
     "statistics":"Statistika",
     "no_pending_order":"Šiuo metu neturite įvykusių užsakymų.",
     "invoice_drawer":{
-    "vat_invoice":"PVM Sąskaita-faktūra"
+    "vat_invoice":"PVM Sąskaita-faktūra",
+      "slump_graph": "Sabrukuma grafiks",
+      "strenght_graph": "Izturības grafiks"
+
     },
     "invoice_history_item":{
       "vat_invoice":"PVM Sąskaita-faktūra",

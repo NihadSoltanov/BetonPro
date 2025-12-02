@@ -103,7 +103,7 @@ const OrderForm = ({
                                           title={e}
                                           selectedIndex={selectedSlumpIndex}
                                           selectedbuttonStyle={{
-                                              backgroundColor: 'green',
+                                              backgroundColor: '#FF8A00',
                                           }}
                                           isSelected={selectedSlumpIndex === i}
                                           onPress={async value => {
@@ -141,7 +141,7 @@ const OrderForm = ({
                                         title={e.class}
                                         selectedIndex={selectedStrengthIndex}
                                         selectedbuttonStyle={{
-                                            backgroundColor: 'green',
+                                            backgroundColor: '#FF8A00',
                                         }}
                                         isSelected={selectedStrengthIndex === i}
                                         onPress={async value => {

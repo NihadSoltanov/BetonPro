@@ -32,6 +32,8 @@ import ProductSvg from './product';
 import InfoSvg from './info';
 import SettingsSvg from './settings';
 import PumpCarSvg from './pumpCar';
+import SlumpGraphSvg from './slumpGraph';
+import StrengthGraphSvg from './strengthGraph';
 
 export {
   HistorySvg,
@@ -66,5 +68,8 @@ export {
   ProductSvg,
   InfoSvg,
   SettingsSvg,
-  PumpCarSvg
+  PumpCarSvg,
+  SlumpGraphSvg,
+  StrengthGraphSvg
+
 };

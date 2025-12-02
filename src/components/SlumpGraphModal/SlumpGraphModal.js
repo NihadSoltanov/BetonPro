@@ -3,7 +3,7 @@ import {Modal, View, Text, Pressable, StyleSheet, Dimensions} from 'react-native
 
 const {width, height} = Dimensions.get('window');
 
-export const SlumpGraphModal = ({visible, onClose, children}) => {
+export const SlumpGraphModal = ({visible, onClose, children, title = 'Slump Graph'}) => {
   if (!visible) return null;
 
   return (
@@ -11,9 +11,10 @@ export const SlumpGraphModal = ({visible, onClose, children}) => {
       <Pressable style={styles.overlay} onPress={onClose}>
         <Pressable style={styles.modal} onPress={e => e.stopPropagation()}>
 
-          <Text style={styles.title}>Slump Graph</Text>
+          {/* BURASI DEĞİŞTİ */}
+          <Text style={styles.title}>{title}</Text>
 
-          {children} {/* graph burada render olacaq */}
+          {children}
 
           <Pressable style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeText}>Close</Text>
@@ -24,6 +25,7 @@ export const SlumpGraphModal = ({visible, onClose, children}) => {
     </Modal>
   );
 };
+
 
 const styles = StyleSheet.create({
   overlay: {

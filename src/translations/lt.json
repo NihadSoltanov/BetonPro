@@ -53,7 +53,7 @@
       "forgot_password":"Pamiršau slaptažodį",
       "forgot_password_header":"Įveskite savo paskyros el. paštą",
       "contacts":"Kontaktai",
-      "email":"El. paštas",
+      "email":"Vartotojo vardas",
       "password":"Slaptažodis",
       "login":"Prisijungti",
       "register":"Registruotis",
@@ -125,7 +125,11 @@
       "statistics":"Statistika",
       "no_pending_order":"Šiuo metu neturite laukiančių užsakymų.",
       "invoice_drawer":{
-      "vat_invoice":"PVM sąskaita faktūra"
+      "vat_invoice":"PVM sąskaita faktūra",
+        "slump_graph": "Skystumo grafikas",
+        "strenght_graph": "Stiprio grafikas"
+
+
       },
       "invoice_history_item":{
         "vat_invoice":"PVM sąskaita faktūra",

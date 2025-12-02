@@ -53,7 +53,7 @@
     "forgot_password":"Forgot password",
     "forgot_password_header":"Please write your accounts email",
     "contacts":"Contacts",
-    "email":"Email",
+    "email":"Username",
     "password":"Password",
     "login":"Login",
     "register":"Register",
@@ -125,7 +125,9 @@
     "statistics":"Statistics",
     "no_pending_order":"You currently have no pending orders.",
     "invoice_drawer":{
-    "vat_invoice":"VAT Invoice"
+    "vat_invoice":"VAT Invoice",
+      "slump_graph" : "Slump Graph",
+      "strenght_graph": "Strenght Graph"
     },
     "invoice_history_item":{
       "vat_invoice":"VAT Invoice",

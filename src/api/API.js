@@ -29,20 +29,25 @@ const login = (data) => {
     });
 };
 
-const getSlumpMobile = async (orderId, db) => {
-  const base = ENDPOINTS.SLUMP_MOBILE_LT;
-  const url = `${base}&order_id=${orderId}&db=${db}`;
-
-  console.log("🔵 Fetch SlumpMobile:", url);
-
-  return axios
-    .get(url)
-    .then((resp) => resp.data)
-    .catch((err) => {
-      console.log("❌ Slump fetch error", err);
+const getSlumpMobile = (orderId, db) => {
+  const query = `&order_id=${orderId}&db=${db}`;
+  return RequestType.getRequest(ENDPOINTS.SLUMP_MOBILE_LT, query)
+    .then(resp => resp)
+    .catch(err => {
+      console.log("❌ Slump fetch error:", err);
       throw err;
     });
 };
+const getStrengthMobile = (orderId, db) => {
+  const query = `&order_id=${orderId}&db=${db}`;
+  return RequestType.getRequest(ENDPOINTS.STRENGTH_MOBILE_LT, query)
+    .then(resp => resp)          // şimdilik raw JSON dönüyoruz
+    .catch(err => {
+      console.log("❌ Strength fetch error:", err);
+      throw err;
+    });
+};
+
 
 const getMixturesAndPumps = () =>
   RequestType.getRequest(ENDPOINTS.MIXTURES_AND_PUMPS).then((resp) =>
@@ -279,7 +284,8 @@ const API = {
   getGraphsData,
   getClassessData,
   userExists,
-  getSlumpMobile
+  getSlumpMobile,
+    getStrengthMobile
 };
 
 export default API;
