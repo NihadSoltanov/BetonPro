@@ -14,7 +14,6 @@ import {
   OrderHistoryItem,
   InvoiceDrawer,
   WaybillDrawer,
-  HistoryAmountGraph,
   OrderListHeader,
 } from './components';
 import {ROUTES} from '../../routing/routes';
@@ -25,11 +24,13 @@ import logo from '../../assets/logo.png';
 import stairs from '../../assets/backgrounds/stairs.png';
 import rectangle from '../../assets/backgrounds/rectangle.png';
 import {SPACING} from '../../styles/theme';
-import { useGraphsData } from '../../hooks/data/useGraphsData';
 import { useTranslate } from '../../hooks/useTranslate';
+import { useOrderHistoryGraph } from '../../hooks/data/useOrderHistoryGraph';
+import OrderHistoryLoadGraph from './components/OrderHistoryLoadGraph';
+import ManagerModal from '../../components/ManagerModal';
 
 const OrderHistory = ({navigation}) => {
-  const { t} = useTranslate();
+  const { t } = useTranslate();
   const [selectedId, setSelectedId] = useState(null);
   const [orderHistory, setOrderHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,24 +39,41 @@ const OrderHistory = ({navigation}) => {
   const [activeOrder, setActiveOrder] = useState(null);
   const [activeDelivery, setActiveDelivery] = useState(null);
   const [isEndReached, setIsEndReached] = useState(false);
-  const {isLoadingGraphData,graphData} = useGraphsData();
-  const {filters, actions, isFiltered} = useContext(FilterContext);
+  const [managerModal, setManagerModal] = useState({
+    visible: false,
+    name: '',
+    phone: '',
+  });
+  const { filters, actions, isFiltered } = useContext(FilterContext);
 
-  const renderItem = React.useCallback(
-    ({item}) => {
-      return (
-        <OrderHistoryItem
-          item={item}
-          deliveryId={item.deliveryId}
-          isOpen={selectedId === item.id}
-          onPress={() => setSelectedId(item.id)}
-          onMorePress={(order) => setActiveOrder(order)}
-          onDeliveryMorePress={(delivery) => setActiveDelivery(delivery)}
-        />
-      );
-    },
-    [setSelectedId, selectedId],
-  );
+  const startDate = filters?.startDate || null;
+
+  const { totalGraph, branchGraph, isLoadingGraph } =
+    useOrderHistoryGraph(orderHistory, startDate);
+
+ const renderItem = React.useCallback(
+   ({item}) => (
+     <OrderHistoryItem
+       item={item}
+       deliveryId={item.deliveryId}
+       isOpen={selectedId === item.id}
+       onPress={() => setSelectedId(item.id)}
+       onMorePress={(order) => setActiveOrder(order)}
+       onDeliveryMorePress={(delivery) => setActiveDelivery(delivery)}
+       // ✅ Manager tıklamasını buradan gönderiyoruz
+       onManagerPress={(name, phone) => {
+         console.log('Manager pressed:', name, phone);
+         setManagerModal({
+           visible: true,
+           name,
+           phone,
+         });
+       }}
+     />
+   ),
+   [selectedId],
+ );
+
 
   const getOrderHistory = useCallback(
     (page, limit, refresh) => {
@@ -65,11 +83,7 @@ const OrderHistory = ({navigation}) => {
           if (refresh) setOrderHistory(res.orders);
           else {
             if (res.orders.length === 0) setIsEndReached(true);
-            else
-              setOrderHistory((prevOrderHistory) => [
-                ...prevOrderHistory,
-                ...res.orders,
-              ]);
+            else setOrderHistory((prev) => [...prev, ...res.orders]);
           }
         } else {
           setOrderHistory([]);
@@ -88,8 +102,9 @@ const OrderHistory = ({navigation}) => {
 
   const handleEndReached = () => {
     if (orderHistory.length > 0 && !isEndReached) {
-      setCurrentPage((prevPage) => prevPage + 1);
-      getOrderHistory(currentPage + 1, itemsPerPage);
+      const nextPage = currentPage + 1;
+      setCurrentPage(nextPage);
+      getOrderHistory(nextPage, itemsPerPage);
     }
   };
 
@@ -99,33 +114,30 @@ const OrderHistory = ({navigation}) => {
       setIsEndReached(false);
       getOrderHistory(1, itemsPerPage, true);
     });
-
     return unsubscribe;
-  }, [navigation, getOrderHistory, currentPage, itemsPerPage]);
+  }, [navigation, getOrderHistory]);
 
   useEffect(() => {
-    return () => {
-      actions.resetFiltering();
-    };
+    return () => actions.resetFiltering();
   }, []);
 
   const handleSigningEvent = (deliveryId) => {
     setActiveDelivery(null);
     const newOrders = orderHistory.map((order) => {
       if (selectedId === order.id) {
-        const tempOrder = {
+        const temp = {
           ...order,
           unsignedDocumentCount:
             order.unsignedDocumentCount > 1
               ? order.unsignedDocumentCount - 1
               : 0,
         };
-        tempOrder.deliveries = tempOrder.deliveries.map((delivery) => {
-          if (delivery.id === deliveryId) return {...delivery, signed: true};
-          return delivery;
-        });
 
-        return tempOrder;
+        temp.deliveries = temp.deliveries.map((delivery) =>
+          delivery.id === deliveryId ? {...delivery, signed: true} : delivery,
+        );
+
+        return temp;
       }
       return order;
     });
@@ -134,70 +146,81 @@ const OrderHistory = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{flex:1}}>
-    <View style={styles.rootContainer}>
-      <View style={[styles.container]}>
-        <FlatList
-          ListHeaderComponent={
-            <>
-              <View style={{flex: 1}}>
-                <Image source={stairs} style={styles.image} />
-                <Image source={rectangle} style={styles.image} />
-                <StatusBar hidden />
-                <View style={styles.headerContainer}>
-                  <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <BackIconSvg {...styles.backButton} />
-                  </TouchableOpacity>
-                  <Image source={logo} style={styles.logo} />
-                  <ProfileButton
-                    onPress={() => navigation.navigate(ROUTES.PROFILE)}
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.rootContainer}>
+        <View style={styles.container}>
+          <FlatList
+            ListHeaderComponent={
+              <>
+                <View style={{flex: 1}}>
+                  <Image source={stairs} style={styles.image} />
+                  <Image source={rectangle} style={styles.image} />
+                  <StatusBar hidden />
+                  <View style={styles.headerContainer}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                      <BackIconSvg {...styles.backButton} />
+                    </TouchableOpacity>
+                    <Image source={logo} style={styles.logo} />
+                    <ProfileButton
+                      onPress={() => navigation.navigate(ROUTES.PROFILE)}
+                    />
+                  </View>
+                </View>
+
+                {/* ✅ GRAPH BURADA */}
+                <OrderHistoryLoadGraph
+                  branchGraph={branchGraph}
+                  isLoading={isLoadingGraph}
+                />
+
+                <OrderListHeader filters={filters} />
+              </>
+            }
+            data={orderHistory}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            extraData={selectedId}
+            refreshing={isLoading}
+            onRefresh={handleRefresh}
+            onEndReached={handleEndReached}
+            onEndReachedThreshold={0.5}
+            ItemSeparatorComponent={() => (
+              <View style={{height: 25}} />
+            )}
+            ListEmptyComponent={
+              isLoading ? (
+                <></>
+              ) : (
+                <View style={{marginHorizontal: SPACING.md}}>
+                  <NoOrders
+                    isFiltered={isFiltered}
+                    defaultText={t('order_history_form.no_pending_order')}
                   />
                 </View>
-                <View style={styles.subHeaderContainer}>
-                {!isLoadingGraphData && graphData && (
-                   <Text style={styles.title}>{t('order_history_form.statistics')}</Text>
-                )}
-                </View>
-              </View>
-              <HistoryAmountGraph />
-              <OrderListHeader filters={filters} />
-            </>
-          }
-          data={orderHistory}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          extraData={selectedId}
-          refreshing={isLoading}
-          onRefresh={handleRefresh}
-          onEndReached={handleEndReached}
-          onEndReachedThreshold={0.5}
-          ItemSeparatorComponent={() => <View style={{height: 25}} />}
-          ListEmptyComponent={
-            isLoading ? (
-              <></>
-            ) : (
-              <View style={{marginHorizontal: SPACING.md}}>
-                <NoOrders
-                  isFiltered={isFiltered}
-                  defaultText={t('order_history_form.no_pending_order')}
-                />
-              </View>
-            )
-          }
-        />
-        <InvoiceDrawer
-          isVisible={!!activeOrder}
-          order={activeOrder}
-          onClose={() => setActiveOrder(null)}
-        />
-        <WaybillDrawer
-          isVisible={!!activeDelivery}
-          delivery={activeDelivery}
-          onClose={() => setActiveDelivery(null)}
-          onSignCallback={handleSigningEvent}
-        />
+              )
+            }
+          />
+
+          <InvoiceDrawer
+            isVisible={!!activeOrder}
+            order={activeOrder}
+            onClose={() => setActiveOrder(null)}
+          />
+          <WaybillDrawer
+            isVisible={!!activeDelivery}
+            delivery={activeDelivery}
+            onClose={() => setActiveDelivery(null)}
+            onSignCallback={handleSigningEvent}
+          />
+          <ManagerModal
+            visible={managerModal.visible}
+            name={managerModal.name}
+            phone={managerModal.phone}
+            onClose={() => setManagerModal(prev => ({ ...prev, visible: false }))}
+          />
+
+        </View>
       </View>
-    </View>
     </SafeAreaView>
   );
 };

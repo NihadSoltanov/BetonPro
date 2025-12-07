@@ -29,7 +29,7 @@ const data = [
 ];
 
 const regionData = [
-  { label: 'HMobile', value: 'HMobile' },
+  { label: 'Lithuania', value: 'HMobile' },
 ];
 
 const Login = ({ navigation }) => {

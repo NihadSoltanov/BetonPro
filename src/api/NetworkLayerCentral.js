@@ -24,6 +24,7 @@ const request = async function (options, contentType, authorize = true) {
     const user = await getUserName();
     const psw = await getUserPsw();
     options.url = `${options.url}&user=${user}&psw=${psw}`;
+    console.log("🟡 [Network] POST BODY:", options.data);
   } else {
     const parsed = JSON.parse(options.data);
     options.url = `${options.url}&user=${parsed.user}&psw=${parsed.psw}`;

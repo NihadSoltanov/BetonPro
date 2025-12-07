@@ -16,7 +16,8 @@ const OrderCard = ({
   header,
   children,
   additionalInfo,
-  displayOrdered
+  displayOrdered,
+  onManagerPress
 }) => {
   const { t} = useTranslate();
   return (
@@ -59,17 +60,27 @@ const OrderCard = ({
           <Text style={styles.orderSubHeaderDetailsText}>{t('components.order_card.for')}:</Text>
           <Text style={styles.orderSubHeaderDetailsText}>{item.orderedBy}</Text>
         </View>
-        <View
-          style={[
-            styles.orderSubHeaderDetails,
-            isOpen && !additionalInfo && styles.orderSubHeaderDetailsOpen,
-          ]}
-        >
-          <Text style={styles.orderSubHeaderDetailsText}>{t('components.order_card.manager')}:</Text>
-          <Text style={styles.orderSubHeaderDetailsText}>
-            {item.salesPerson}
-          </Text>
-        </View>
+     <TouchableOpacity
+       onPress={() => onManagerPress(item.salesPerson, "+37069002555")}
+
+       style={[
+         styles.orderSubHeaderDetails,
+         isOpen && !additionalInfo && styles.orderSubHeaderDetailsOpen,
+       ]}
+     >
+       <Text style={styles.orderSubHeaderDetailsText}>
+         {t('components.order_card.manager')}:
+       </Text>
+
+       <Text style={[styles.orderSubHeaderDetailsText, { textDecorationLine: 'underline' }]}>
+         {item.salesPerson}
+       </Text>
+     </TouchableOpacity>
+
+
+
+
+
         {displayOrdered && (
          <View style={{flexDirection:'row'}}>
             <Text style={styles.orderSubHeaderDetailsText}>

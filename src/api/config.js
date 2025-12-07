@@ -41,6 +41,7 @@ const ENDPOINTS = {
   EDIT_ORDER: 'updateOrder',
   COWORKERS: 'getCoWorkers',
   GRAPH: 'getGraphData',
+  ORDER_HISTORY_GRAPH: 'getLoadingChartJson',
   Classes: 'getClasses',
   USER_EXISTS: 'userExists',
 };

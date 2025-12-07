@@ -16,38 +16,39 @@ function OrderHistoryItem({
   isOpen,
   onMorePress,
   onDeliveryMorePress,
+  onManagerPress,
 }) {
   const { t} = useTranslate();
   return (
     <View style={styles.orderItem}>
-      <OrderCard
-        displayOrdered={true}
-        item={item}
-        onPress={onPress}
-        isOpen={isOpen}
-        header={
-          <View>
-            {item.unsignedDocumentCount > 0 && (
-              <View style={styles.unsignedDocumentNotification}>
-                <Text
-                  style={styles.unsignedDocumentNotificationText}
-                  numberOfLines={1}
-                >
-                  {item.unsignedDocumentCount > 10
-                    ? '9+'
-                    : item.unsignedDocumentCount}
-                </Text>
-              </View>
-            )}
-            {
-              item.invoiceId !== 0 && (
-               <IconButton Icon={DotsSvg} onPress={() => onMorePress(item)} />
-              )
-            }
-           
-          </View>
-        }
-      >
+   <OrderCard
+     displayOrdered={true}
+     item={item}
+     onPress={onPress}
+     isOpen={isOpen}
+     header={
+       <View>
+         {item.unsignedDocumentCount > 0 && (
+           <View style={styles.unsignedDocumentNotification}>
+             <Text
+               style={styles.unsignedDocumentNotificationText}
+               numberOfLines={1}
+             >
+               {item.unsignedDocumentCount > 10
+                 ? '9+'
+                 : item.unsignedDocumentCount}
+             </Text>
+           </View>
+         )}
+         {item.invoiceId !== 0 && (
+           <IconButton Icon={DotsSvg} onPress={() => onMorePress(item)} />
+         )}
+       </View>
+     }
+     // ✅ BURAYA EKLE
+     onManagerPress={onManagerPress}
+   >
+
         <OrderDetailsItem header={t('order_history_form.invoice_history_item.brand')} text={item.productName} />
         <OrderDetailsItem
           header={t('order_history_form.invoice_history_item.quantity')}

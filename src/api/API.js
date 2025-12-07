@@ -70,6 +70,27 @@ const insertOrder = (data) =>
     ENDPOINTS.CREATE_ORDER,
     ApiDataMapper.mapCreateOrderRequest(data),
   );
+const getOrderHistoryGraphData = (payload) => {
+  console.log("📤 [API] Sending Graph Payload:", JSON.stringify(payload, null, 2));
+
+  return RequestType.postRequest(
+    ENDPOINTS.ORDER_HISTORY_GRAPH,
+    {
+      user: "",
+      psw: "",
+      ...payload
+    }
+  )
+    .then((resp) => {
+      console.log("📥 [API] FULL Graph Response:", JSON.stringify(resp, null, 2));
+      return resp;
+    })
+    .catch((err) => {
+      console.log("❌ [API] Graph Error:", err);
+      throw err;
+    });
+};
+
 
 const getOrderHistory = ({page, limit, filters}) =>
   RequestType.postRequest(ENDPOINTS.ORDER_HISTORY, {
@@ -285,7 +306,8 @@ const API = {
   getClassessData,
   userExists,
   getSlumpMobile,
-    getStrengthMobile
+    getStrengthMobile,
+    getOrderHistoryGraphData
 };
 
 export default API;
