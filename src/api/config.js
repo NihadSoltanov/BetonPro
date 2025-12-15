@@ -2,14 +2,13 @@ import {DELIVERY_STATUS} from '../config';
 
 const ENDPOINTS = {
   ROOT: 'https://bendras.hcapskaita.lt/go.php?mod=ecocretesmart&act=',
-  API_URL_LT:'https://bendras.hcapskaita.lt/go.php?mod=ecocretesmart&act=',
-  API_URL_LV:'https://generalis.hclv.lv/go.php?mod=cretozaurus&act=',
-  API_URL_CR:'https://general.hmbetonas.lt/go.php?mod=ecocretesmart&act=',
+  API_URL_LT:'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=',
+  API_URL_LV:'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=',
+  API_URL_CR:'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=',
   API_URL_HMOBILE: 'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=',
   SLUMP_MOBILE_LT: 'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=getSlumpMobile',
   STRENGTH_MOBILE_LT: 'https://lt-mob.hmbetonpro.eu/go.php?mod=ecocretesmart&act=getStrengthMobile',
   LOGIN: 'login',
-  REGISTER: 'register',
   MIXTURES_AND_PUMPS: 'getMixturesAndPumps',
   FACTORIES: 'getPadaliniai',
   ONGOING_ORDERS: 'getOngoingOrders',
@@ -44,6 +43,10 @@ const ENDPOINTS = {
   ORDER_HISTORY_GRAPH: 'getLoadingChartJson',
   Classes: 'getClasses',
   USER_EXISTS: 'userExists',
+  DEACTIVATE_USER: '/deactivateUser',
+  SEND_REGISTER_MAIL: 'sendRegisterMail',
+
+
 };
 
 const DELIVERY_STATUS_MAP = {

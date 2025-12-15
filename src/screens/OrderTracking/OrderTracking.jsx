@@ -13,6 +13,7 @@ import {useOrderCollapse} from '../../hooks/useOrderCollapse';
 import {ROUTES} from '../../routing/routes';
 import {FilterContext} from '../../context/FilterProvider';
 import { useTranslate } from '../../hooks/useTranslate';
+import ManagerModal from '../../components/ManagerModal';
 
 const OrderTracking = ({navigation}) => {
   const { t} = useTranslate();
@@ -21,6 +22,11 @@ const OrderTracking = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const {filters, actions, isFiltered} = useContext(FilterContext);
+  const [managerModal, setManagerModal] = useState({
+    visible: false,
+    name: '',
+    phone: '',
+  });
 
   const getOngoingOrders = useCallback(() => {
     setIsLoading(true);
@@ -55,6 +61,15 @@ const OrderTracking = ({navigation}) => {
           isOpen={selectedId === item.id}
           onPress={() => setSelectedId(item.id)}
           onRefresh={handleRefresh}
+          onManagerPress={(name, phone) => {
+            console.log('TRACKING MANAGER:', name, phone);
+            setManagerModal({
+              visible: true,
+              name,
+              phone,
+            });
+          }}
+
         />
       );
     },
@@ -69,6 +84,15 @@ const OrderTracking = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex:1}}>
+    <ManagerModal
+      visible={managerModal.visible}
+      name={managerModal.name}
+      phone={managerModal.phone}
+      onClose={() =>
+        setManagerModal(prev => ({ ...prev, visible: false }))
+      }
+    />
+
     <SecondaryHeader
       disableScroll
       title={t('order_tracking_form.order_tracking')}

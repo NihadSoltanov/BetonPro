@@ -15,6 +15,7 @@ import {ROUTES} from '../../routing/routes';
 import {useCancelOrder} from '../../hooks/data';
 import {FilterContext} from '../../context/FilterProvider';
 import { useTranslate } from '../../hooks/useTranslate';
+import ManagerModal from '../../components/ManagerModal';
 
 const PendingOrders = ({navigation}) => {
   const { t} = useTranslate();
@@ -31,18 +32,32 @@ const PendingOrders = ({navigation}) => {
     }
   };
   const {filters, actions, isFiltered} = useContext(FilterContext);
+const [managerModal, setManagerModal] = useState({
+  visible: false,
+  name: '',
+  phone: '',
+});
 
   const renderItem = React.useCallback(
     ({item}) => {
       return (
-        <PendingOrderItem
-          item={item}
-          deliveryId={item.deliveryId}
-          isOpen={selectedId === item.id}
-          onPress={() => setSelectedId(item.id)}
-          onCancelPress={() => setIsCancelVisible(true)}
-          onEditPress={onEditPress}
-        />
+       <PendingOrderItem
+         item={item}
+         deliveryId={item.deliveryId}
+         isOpen={selectedId === item.id}
+         onPress={() => setSelectedId(item.id)}
+         onCancelPress={() => setIsCancelVisible(true)}
+         onEditPress={onEditPress}
+         onManagerPress={(name, phone) => {
+           console.log('PENDING MANAGER:', name, phone);
+           setManagerModal({
+             visible: true,
+             name,
+             phone,
+           });
+         }}
+       />
+
       );
     },
     [setSelectedId, selectedId],
@@ -151,6 +166,15 @@ const PendingOrders = ({navigation}) => {
         confirmButtonText={t('pending_orders_form.delete')}
         isLoading={isLoadingCancelOrder}
       />
+      <ManagerModal
+        visible={managerModal.visible}
+        name={managerModal.name}
+        phone={managerModal.phone}
+        onClose={() =>
+          setManagerModal(prev => ({ ...prev, visible: false }))
+        }
+      />
+
     </SecondaryHeader>
     </SafeAreaView>
   );

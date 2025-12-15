@@ -180,56 +180,46 @@ const Register = ({navigation}) => {
     return true;
   }
 
-  const  handleRegister = () => {
-    if(!validateRegister()){
+  const handleRegister = () => {
+    if (!validateRegister()) {
       return;
-    }
-
-    if(!code){
-      setCode(email);
-    }
-
-    if(!tax){
-      setTax("");
     }
 
     setIsLoading(true);
 
-
-    let data = {}
-    if(isCompany){
-      data = {name: company, person: name, psw: password,
-        tel: phone, email, tax: tax, code:code, privatus:0, address, lang: language, ID:id
-        };
-    } else {
-      data = {name: name, person: name, psw: password,
-        tel: phone, email, tax: tax, code:email, privatus:1, address, lang: language, ID:id
-        };
-    }
-
-    API.register(data)
-      .then((resp) => {
-        if (resp['success']) {
-          setRegistrationSuccessful(true);
-        } else {
-          setErrorMessage(
-            t('register.user_exists'),
-          );
-        }
+    API.sendRegisterMail({
+      name,
+      tel: phone,
+      tax,
+      code,
+      email,
+      company,
+      address,
+      region,
+      language,
+      isCompany,
+    })
+      .then(() => {
+        setRegistrationSuccessful(true);
       })
       .catch(() => {
-        setErrorMessage(t('login.problem_occurred'));
+        setErrorMessage("Email cant send.");
       })
       .finally(() => {
         setIsLoading(false);
       });
-    
   };
 
-  const handleGoToLogin = () => {
-    setRegistrationSuccessful(false);
-    navigation.navigate(ROUTES.LOGIN);
-  }
+const handleGoToLogin = () => {
+  setRegistrationSuccessful(false);
+
+  navigation.reset({
+    index: 0,
+    routes: [{ name: ROUTES.LOGIN }],
+  });
+};
+
+
 
   const onHandleRegion= async (val)=>{
     setRegion(val);
@@ -433,7 +423,7 @@ const Register = ({navigation}) => {
             <Text>{t('register.conditions')}</Text>
           </ScrollView>
         </CustomModal>
-        <CustomModal isVisible={registrationSuccessful} onClose={() => setRegistrationSuccessful(false)}>
+        <CustomModal isVisible={registrationSuccessful} onClose={handleGoToLogin}>
             <Text style={styles.title}>{t("login.thank_you")}</Text>
             <Text style={styles.text}>{t("login.must_activate")}</Text>
             <Button

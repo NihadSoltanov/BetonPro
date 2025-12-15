@@ -133,6 +133,8 @@ const getUserData = () =>
   RequestType.getRequest(ENDPOINTS.USER_DATA).then((resp) =>
     ApiDataMapper.mapUserData(resp),
   );
+const deactivateUser = () =>
+  RequestType.getRequest(ENDPOINTS.DEACTIVATE_USER).then((resp) => resp);
 
 const getSupportContacts = () =>
   axios
@@ -274,7 +276,16 @@ const userExists = (email) =>
   RequestType.getRequest(ENDPOINTS.USER_EXISTS, `&email=${email}`).then((resp) => {
     return resp;
   });
+const sendRegisterMail = (data) => {
+  console.log("✅ FINAL MAIL DATA:", data);
+  console.log("✅ MAIL ENDPOINT:", ENDPOINTS.SEND_REGISTER_MAIL);
 
+  return RequestType.postRequest(
+    ENDPOINTS.SEND_REGISTER_MAIL,
+    data,
+    false
+  );
+};
 const API = {
   register,
   login,
@@ -307,7 +318,9 @@ const API = {
   userExists,
   getSlumpMobile,
     getStrengthMobile,
-    getOrderHistoryGraphData
+    getOrderHistoryGraphData,
+    deactivateUser,
+    sendRegisterMail
 };
 
 export default API;

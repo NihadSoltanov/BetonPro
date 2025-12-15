@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {
   OrderCard,
@@ -19,11 +19,21 @@ import {EditModal} from '../EditModal/EditModal';
 import API from '../../../../api/API';
 import {DELIVERY_COLORS_BY_STATUS} from '../../../../styles/theme';
 import { useTranslate } from '../../../../hooks/useTranslate';
+import SlumpGraph from '../../../../components/SlumpGraphModal/SlumpGraph';
 
-function OngoingOrderItem({item, onPress, isOpen, onRefresh}) {
+function OngoingOrderItem({
+  item,
+  onPress,
+  isOpen,
+  onRefresh,
+  onManagerPress,
+}) {
+
   const { t } = useTranslate();
   const { navigate } = useNavigation();
   const [isEditVisible, setIsEditVisible] = useState(false);
+  const [slumpData, setSlumpData] = useState(null);
+  const [slumpLoading, setSlumpLoading] = useState(false);
 
   const { ongoingOrder, isLoadingOrder, getOngoingOrder } = useOngoingOrder(
     item.id,
@@ -49,6 +59,28 @@ function OngoingOrderItem({item, onPress, isOpen, onRefresh}) {
 
     navigate(ROUTES.MAP_TRACKING, params);
   }, [navigate, ongoingOrder, item.id, item.db]);
+ const loadSlump = useCallback(async () => {
+   try {
+     setSlumpLoading(true);
+
+     const result = await API.getSlumpMobile(item?.id, item?.db);
+     console.log("✅ SLUMP RESULT:", result);
+
+     setSlumpData(result);
+   } catch (e) {
+     console.log('❌ Slump API error:', e);
+   } finally {
+     setSlumpLoading(false);
+   }
+ }, [item?.id, item?.db]);
+useEffect(() => {
+  if (isOpen) {
+    loadSlump();
+  } else {
+    setSlumpData(null);
+    setSlumpLoading(false);
+  }
+}, [isOpen, loadSlump]);
 
   const onEditPress = () => {
     setIsEditVisible(true);
@@ -95,6 +127,9 @@ function OngoingOrderItem({item, onPress, isOpen, onRefresh}) {
       item={item}
       onPress={onPress}
       isOpen={isOpen}
+       onManagerPress={() =>
+          onManagerPress?.(item.salesPerson, '+37069002555')
+        }
       additionalInfo={
         <View>
           <View style={styles.additionalInfoRow}>
@@ -163,6 +198,25 @@ function OngoingOrderItem({item, onPress, isOpen, onRefresh}) {
         <View style={styles.loaderContainer}>
           <Loader size="large" />
         </View>
+      )}
+      {/* ✅ SLUMP GRAPH — KART AÇILINCA ALTTA GÖSTER */}
+      {isOpen && (
+        <>
+          {slumpLoading && (
+            <View style={{ marginTop: 16 }}>
+              <Loader size="small" />
+            </View>
+          )}
+
+          {!slumpLoading && slumpData && (
+            <View style={{ marginTop: 16 }}>
+              <SlumpGraph
+                data={slumpData.predicted_points}
+                deliveryTime={slumpData.delivery_time}
+              />
+            </View>
+          )}
+        </>
       )}
 
       <View style={styles.editButtonContainer}>

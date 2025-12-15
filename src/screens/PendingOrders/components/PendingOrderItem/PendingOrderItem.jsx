@@ -13,7 +13,14 @@ import {
 import {PENDING_ORDER_STATUS} from '../../../../api/orderStatus';
 import { useTranslate } from '../../../../hooks/useTranslate';
 
-function PendingOrderItem({item, onPress, isOpen, onCancelPress, onEditPress}) {
+function PendingOrderItem({
+  item,
+  onPress,
+  isOpen,
+  onCancelPress,
+  onEditPress,
+  onManagerPress
+}) {
   const { t} = useTranslate();
   const isDateToday = (date) => {
     const today = new Date();
@@ -36,6 +43,9 @@ function PendingOrderItem({item, onPress, isOpen, onCancelPress, onEditPress}) {
           text={mapPendingOrderStatusToDisplayValue(item.status)}
         />
       }
+  onManagerPress={() =>
+      onManagerPress?.(item.salesPerson, "+37069002555")
+    }
     >
       <OrderDetailsItem header={t('pending_orders_form.pending_orderitem.brand')} text={item.productName} />
       <OrderDetailsItem

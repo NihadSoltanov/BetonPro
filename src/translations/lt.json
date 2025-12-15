@@ -121,6 +121,10 @@
       "included":"Įskaitant",
       "not_included":"Neįtrauktos"
     },
+  "manager_modal": {
+    "call": "Skambinti",
+    "cancel": "Atšaukti"
+  },
     "order_history_form":{
       "statistics":"Statistika",
       "no_pending_order":"Šiuo metu neturite laukiančių užsakymų.",
@@ -209,7 +213,11 @@
       "firm":"Bendrovė",
       "company_code":"Įmonės kodas",
       "want_to_logout":"Ar tikrai norite atsijungti?",
-      "cancel":"Atšaukti"
+      "cancel":"Atšaukti",
+      "delete_account": "Ištrinti paskyrą",
+      "want_to_delete": "Ar tikrai norite ištrinti paskyrą?",
+      "deleted": "Paskyra ištrinta",
+      "account_deactivated": "Jūsų paskyra buvo išjungta."
    },
    "components":{
       "map_type_selection":{

@@ -25,8 +25,6 @@ import stairs from '../../assets/backgrounds/stairs.png';
 import rectangle from '../../assets/backgrounds/rectangle.png';
 import {SPACING} from '../../styles/theme';
 import { useTranslate } from '../../hooks/useTranslate';
-import { useOrderHistoryGraph } from '../../hooks/data/useOrderHistoryGraph';
-import OrderHistoryLoadGraph from './components/OrderHistoryLoadGraph';
 import ManagerModal from '../../components/ManagerModal';
 
 const OrderHistory = ({navigation}) => {
@@ -46,10 +44,7 @@ const OrderHistory = ({navigation}) => {
   });
   const { filters, actions, isFiltered } = useContext(FilterContext);
 
-  const startDate = filters?.startDate || null;
 
-  const { totalGraph, branchGraph, isLoadingGraph } =
-    useOrderHistoryGraph(orderHistory, startDate);
 
  const renderItem = React.useCallback(
    ({item}) => (
@@ -60,7 +55,6 @@ const OrderHistory = ({navigation}) => {
        onPress={() => setSelectedId(item.id)}
        onMorePress={(order) => setActiveOrder(order)}
        onDeliveryMorePress={(delivery) => setActiveDelivery(delivery)}
-       // ✅ Manager tıklamasını buradan gönderiyoruz
        onManagerPress={(name, phone) => {
          console.log('Manager pressed:', name, phone);
          setManagerModal({
@@ -167,11 +161,7 @@ const OrderHistory = ({navigation}) => {
                   </View>
                 </View>
 
-                {/* ✅ GRAPH BURADA */}
-                <OrderHistoryLoadGraph
-                  branchGraph={branchGraph}
-                  isLoading={isLoadingGraph}
-                />
+
 
                 <OrderListHeader filters={filters} />
               </>

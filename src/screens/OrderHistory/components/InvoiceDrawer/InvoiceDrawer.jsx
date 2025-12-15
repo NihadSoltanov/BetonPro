@@ -4,13 +4,12 @@ import {View, Text, Animated, Easing, Pressable, AccessibilityInfo} from 'react-
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './InvoiceDrawer.styles';
 import {BottomDrawerWithOverlay, Button} from '../../../../components';
-import {DownloadSvg, SlumpGraphSvg, StrengthGraphSvg} from '../../../../assets/icons';
+import {DownloadSvg, SlumpGraphSvg} from '../../../../assets/icons';
 import {openFileLink} from '../../../../util/FileSystemUtils';
 import {getBaseUrl, getUserName, getUserPsw} from '../../../../util/TokenUtil';
 import {useTranslate} from '../../../../hooks/useTranslate';
 import { SlumpGraphModal } from '../../../../components/SlumpGraphModal/SlumpGraphModal';
 import SlumpGraph from '../../../../components/SlumpGraphModal/SlumpGraph';
-import StrengthGraph from '../../../../components/SlumpGraphModal/StrengthGraph';
 
 const Toast = ({visible, type = 'success', title, message, onClose, topOffset = 12, onScreen = false}) => {
   const opacity = useRef(new Animated.Value(0)).current;
@@ -103,13 +102,10 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
   const {t} = useTranslate();
   const insets = useSafeAreaInsets();
   const [isLoading, setIsLoading] = useState(false);
-  const [showSlump, setShowSlump] = useState(false);   // ✅ DÜZGÜN YER
+  const [showSlump, setShowSlump] = useState(false);
   const [slumpData, setSlumpData] = useState(null);
   const [slumpLoading, setSlumpLoading] = useState(false);
 
-  const [showStrength, setShowStrength] = useState(false);
-  const [strengthData, setStrengthData] = useState(null);
-  const [strengthLoading, setStrengthLoading] = useState(false);
 
 
   const [toast, setToast] = useState({visible: false, type: 'success', title: '', message: ''});
@@ -151,20 +147,7 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
   };
 
   useEffect(() => () => hideToastTimer.current && clearTimeout(hideToastTimer.current), []);
-    const handleOpenStrength = async () => {
-      try {
-        setStrengthLoading(true);
 
-        const result = await API.getStrengthMobile(order?.id, order?.db);
-
-        setStrengthData(result);
-        setShowStrength(true);
-      } catch (e) {
-        console.log("❌ Strength API error:", e);
-      } finally {
-        setStrengthLoading(false);
-      }
-    };
 
     const handleOpenSlump = async () => {
       try {
@@ -210,19 +193,11 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
           label={t('order_history_form.invoice_drawer.slump_graph')}
           Icon={SlumpGraphSvg}
           onPress={handleOpenSlump}
-          loading={slumpLoading}     // ⬅️ EKLENDİ
+          loading={slumpLoading}
           buttonStyle={{justifyContent: 'center', marginBottom: 14}}
         />
 
 
-        <Button
-          variant="outlined"
-          label={t('order_history_form.invoice_drawer.strenght_graph')}
-          Icon={StrengthGraphSvg}
-          onPress={handleOpenStrength}
-          loading={strengthLoading}
-          buttonStyle={{justifyContent: 'center', marginBottom: 14}}
-        />
 
             <SlumpGraphModal
               visible={showSlump}
@@ -236,18 +211,6 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
               />
             )}
 
-            </SlumpGraphModal>
-            <SlumpGraphModal
-              visible={showStrength}
-              onClose={() => setShowStrength(false)}
-              title={t('order_history_form.invoice_drawer.strenght_graph')}
-            >
-              {strengthData && (
-                <StrengthGraph
-                  data={strengthData.predicted_points}
-                  f28={strengthData.f28_mpa}
-                />
-              )}
             </SlumpGraphModal>
 
 

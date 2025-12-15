@@ -64,11 +64,11 @@ const Login = ({ navigation }) => {
     }, [])
   );
 
-  const handleRegisterClick = () => setRegisterAlert(true);
-  const handleRegister = () => {
-    setRegisterAlert(false);
+  const handleRegisterClick = () => {
     navigation.navigate(ROUTES.REGISTER);
   };
+
+
 
   const handleLogin = () => {
     if (!region) {
@@ -87,8 +87,8 @@ const Login = ({ navigation }) => {
           if (res['success']) {
             actions.updateAccessToken(res.accessToken, res.user, res.psw);
             actions.updateAgreement(res.agreement);
-            await AsyncStorage.setItem('user', email);
-            await AsyncStorage.setItem('psw', password);
+           await AsyncStorage.setItem('user', res.login);
+           await AsyncStorage.setItem('psw', password);
             setErrorMessage(null);
 
             try {
@@ -229,19 +229,7 @@ const Login = ({ navigation }) => {
             onClose={() => setIsSupportModalVisible(false)}
           />
 
-          <CustomModal
-            isVisible={registerAlert}
-            onClose={() => setRegisterAlert(false)}
-          >
-            <Text style={styles.title}>{t('login.register_alert')}</Text>
-            <Button
-              onPress={handleRegister}
-              label={t('login.ok')}
-              variant="solid"
-              loading={isLoading}
-              disabled={isLoading}
-            />
-          </CustomModal>
+
         </KeyboardAvoidingView>
       </MainHeader>
     </SafeAreaView>

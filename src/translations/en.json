@@ -121,6 +121,12 @@
     "included":"Included",
     "not_included":"Not included"
   },
+  "manager_modal": {
+    "call": "Call",
+    "cancel": "Cancel"
+  },
+
+
   "order_history_form":{
     "statistics":"Statistics",
     "no_pending_order":"You currently have no pending orders.",
@@ -208,7 +214,11 @@
     "firm":"Company Name",
     "company_code":"Company code",
     "want_to_logout":"Are you sure you want to log out?",
-    "cancel":"Cancel"
+    "cancel":"Cancel",
+    "delete_account": "Delete account",
+    "want_to_delete": "Do you really want to delete your account?",
+    "deleted": "Account deleted",
+    "account_deactivated": "Your account has been deactivated."
  },
  "components":{
     "map_type_selection":{

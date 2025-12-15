@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     width: '70%',
     maxWidth: 220,
     alignSelf: 'flex-end',
-    marginTop: 350,
+    marginTop: 260,
     marginBottom: SPACING.lg
   },
 });

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: FONTS.bold,
     fontSize: FONT_SIZE.heading.md,
-    color: COLORS.primary,
+    color: COLORS.white,
   },
   title2: {
     fontFamily: FONTS.bold,

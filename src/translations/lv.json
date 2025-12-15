@@ -121,6 +121,10 @@
     "included":"Įskaičiuota",
     "not_included":"Neįskaičiuota"
   },
+  "manager_modal": {
+    "call": "Zvanīt",
+    "cancel": "Atcelt"
+  },
   "order_history_form":{
     "statistics":"Statistika",
     "no_pending_order":"Šiuo metu neturite įvykusių užsakymų.",
@@ -209,7 +213,11 @@
     "firm":"Įmonė",
     "company_code":"Įmonės kodas",
     "want_to_logout":"Ar tikrai norite atsijungti?",
-    "cancel":"Atšaukti"
+    "cancel":"Atšaukti",
+    "delete_account": "Dzēst kontu",
+    "want_to_delete": "Vai tiešām vēlaties dzēst kontu?",
+    "deleted": "Konts dzēsts",
+    "account_deactivated": "Jūsu konts ir deaktivizēts."
  },
  "components":{
     "map_type_selection":{
