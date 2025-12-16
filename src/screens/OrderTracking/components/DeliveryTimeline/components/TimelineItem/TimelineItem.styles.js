@@ -52,13 +52,10 @@ const styles = StyleSheet.create({
   noBorder: {
     borderColor: COLORS.white,
   },
-  measurementsContainer: {
-    marginTop: 6,
-    marginLeft: 12, // SigningPill ile hizalı
-    paddingTop: 6,
-    borderTopWidth: 1,
-    borderTopColor: '#E5E5E5',
-  },
+ measurementsContainer: {
+   marginTop: 6,
+   marginLeft: SPACING.lg, // headerText ile birebir aynı
+ },
   measurementsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -76,6 +73,13 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: '#555',
   },
+  deliveryDivider: {
+    height: 1,
+    backgroundColor: COLORS.lightGrey,
+    marginTop: SPACING.sm,
+    marginLeft: SPACING.lg,   // timeline text ile hizalı
+  },
+
 
 });
 

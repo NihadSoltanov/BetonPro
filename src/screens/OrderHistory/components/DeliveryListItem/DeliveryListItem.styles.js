@@ -45,12 +45,40 @@ const styles = StyleSheet.create({
   rootContainer: {
     marginTop: SPACING.sm,
   },
-  measureText: {
-    fontFamily: FONTS.regular,
-    fontSize: FONT_SIZE.text.xxs,
-    color: COLORS.grey,
-    marginTop: 2,
+measurementsContainer: {
+  marginTop: 6,
+  marginLeft: 34,   // At plant hizası
+},
+  measurementsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
+  measurementsBlock: {
+    flex: 1,
+  },
+measurementsTitle: {
+  fontSize: 11,
+  fontWeight: '600',
+  color: '#555',
+  marginBottom: 2,
+  marginLeft: 0,
+  paddingLeft: 0,
+},
+
+measurementsText: {
+  fontSize: 11,
+  color: '#555',
+  marginLeft: 0,
+  paddingLeft: 0,
+},
+deliveryDivider: {
+  height: 1,
+  backgroundColor: COLORS.lightGrey,
+  marginTop: SPACING.sm,
+  marginLeft: 34,   // icon + padding sonrası ana text hizası
+},
+
+
 
 });
 

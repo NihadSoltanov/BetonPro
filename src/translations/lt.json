@@ -144,10 +144,10 @@
       },
       "invoice_history_item":{
         "vat_invoice":"PVM sąskaita faktūra",
-        "brand":"Markės pavadinimas",
+        "brand":"Betonas",
         "quantity":"Kiekis",
-        "date":"Duomenys",
-        "start":"Pradžioje",
+        "date":"Data",
+        "start":"Pradžia",
         "note":"Pab."
       },
       "order_list_header":{
@@ -202,8 +202,8 @@
       "pending_orderitem":{
         "brand":"Prekės ženklas",
         "quantity":"Kiekis",
-        "date":"Duomenys",
-        "start":"Pradžioje",
+        "date":"Data",
+        "start":"Pradžia",
         "edit":"Redaguoti",
         "delete":"Ištrinti"
      }
@@ -248,7 +248,7 @@
       "object_name":"Objekto pavadinimas",
       "no_object_found":"Nepavyko rasti objektų."
     },
-    "brand_name":"Markės pavadinimas",
+    "brand_name":"Betonas",
     "no_brands_found":"Nepavyko rasti markių."
    },
 

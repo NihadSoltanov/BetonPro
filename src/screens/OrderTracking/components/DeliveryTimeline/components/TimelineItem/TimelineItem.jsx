@@ -8,7 +8,7 @@ import { IconButton, SigningPill } from '../../../../../../components';
 import { DotsSvg } from '../../../../../../assets/icons';
 import { DELIVERY_STATUS } from '../../../../../../config';
 import { formatOrderQuantity } from '../../../../../../util/DisplayFormatterUtils';
-
+import {useTranslation} from 'react-i18next';
 function TimelineItem({
   title,
   amount,
@@ -22,6 +22,7 @@ function TimelineItem({
   plant,
   onSite,
 }) {
+   const { t } = useTranslation();
   const color = useMemo(
     () => DELIVERY_COLORS_BY_STATUS[status],
     [status]
@@ -43,7 +44,8 @@ function TimelineItem({
 
   const showMeasurements =
     hasValidMeasurements(plant) || hasValidMeasurements(onSite);
-
+   const showPlant = hasValidMeasurements(plant);
+    const showOnSite = hasValidMeasurements(onSite);
   const handleStepsToggle = () =>
     setShouldHideSteps((prev) => !prev);
 
@@ -100,32 +102,38 @@ function TimelineItem({
         <SigningPill signed={signed} />
       )}
 
-      {/* MEASUREMENTS */}
-      {showMeasurements && (
-        <View style={styles.measurementsContainer}>
-          <View style={styles.measurementsRow}>
-            <View style={styles.measurementsBlock}>
-              <Text style={styles.measurementsTitle}>At plant</Text>
-              <Text style={styles.measurementsText}>
-                Temp: {plant?.temperature ?? '—'}
-              </Text>
-              <Text style={styles.measurementsText}>
-                Slump: {plant?.slump ?? '—'}
-              </Text>
-            </View>
+    {(showPlant || showOnSite) && (
+      <View style={styles.measurementsContainer}>
+        <View style={styles.measurementsRow}>
 
+          {showPlant && (
             <View style={styles.measurementsBlock}>
-              <Text style={styles.measurementsTitle}>On site</Text>
+              <Text style={styles.measurementsTitle}>{t('order_history_form.delivery_item.at_plant')}</Text>
               <Text style={styles.measurementsText}>
-                Temp: {onSite?.temperature ?? '—'}
+                {t('order_history_form.delivery_item.temperature')}: {plant?.temperature}
               </Text>
               <Text style={styles.measurementsText}>
-                Slump: {onSite?.slump ?? '—'}
+                {t('order_history_form.delivery_item.slump')}: {plant?.slump}
               </Text>
             </View>
-          </View>
+          )}
+
+          {showOnSite && (
+            <View style={styles.measurementsBlock}>
+              <Text style={styles.measurementsTitle}> {t('order_history_form.delivery_item.on_site')}</Text>
+              <Text style={styles.measurementsText}>
+                 {t('order_history_form.delivery_item.temperature')}: {onSite?.temperature}
+              </Text>
+              <Text style={styles.measurementsText}>
+               {t('order_history_form.delivery_item.slump')}: {onSite?.slump}
+              </Text>
+            </View>
+          )}
+
         </View>
-      )}
+      </View>
+    )}
+
 
       {/* TIMELINE STEPS */}
       {steps &&
@@ -141,6 +149,7 @@ function TimelineItem({
             time={step.time}
           />
         ))}
+    <View style={styles.deliveryDivider} />
     </View>
   );
 }

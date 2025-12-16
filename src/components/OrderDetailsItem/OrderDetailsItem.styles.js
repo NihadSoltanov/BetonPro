@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     color: COLORS.darkGrey,
     fontFamily: FONTS.bold,
     fontSize: FONT_SIZE.heading.xxs,
-    width: 60,
+    width: 80,
   },
   label: {
     fontFamily: FONTS.regular,

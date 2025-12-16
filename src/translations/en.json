@@ -29,7 +29,7 @@
     "orders_in_progress":"orders in progress",
     "pending_orders":"Pending orders",
     "order_history":"Order history",
-    "orders_fulfilled":"orders fulfilled",
+    "orders_fulfilled":"orders finished",
     "contacts":"Contacts",
     "new_orders":"New orders"
   },

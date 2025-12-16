@@ -19,7 +19,7 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "eu.tinysolutions.betonpro",
+      "bundleIdentifier": "eu.tinysolutions.betonpro.public",
       "supportsTablet": true
     },
     "android": {
