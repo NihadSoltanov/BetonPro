@@ -4,12 +4,10 @@ import {View, Text, Animated, Easing, Pressable, AccessibilityInfo} from 'react-
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './InvoiceDrawer.styles';
 import {BottomDrawerWithOverlay, Button} from '../../../../components';
-import {DownloadSvg, SlumpGraphSvg} from '../../../../assets/icons';
+import {DownloadSvg} from '../../../../assets/icons';
 import {openFileLink} from '../../../../util/FileSystemUtils';
 import {getBaseUrl, getUserName, getUserPsw} from '../../../../util/TokenUtil';
 import {useTranslate} from '../../../../hooks/useTranslate';
-import { SlumpGraphModal } from '../../../../components/SlumpGraphModal/SlumpGraphModal';
-import SlumpGraph from '../../../../components/SlumpGraphModal/SlumpGraph';
 
 const Toast = ({visible, type = 'success', title, message, onClose, topOffset = 12, onScreen = false}) => {
   const opacity = useRef(new Animated.Value(0)).current;
@@ -18,24 +16,59 @@ const Toast = ({visible, type = 'success', title, message, onClose, topOffset = 
   useEffect(() => {
     if (visible) {
       Animated.parallel([
-        Animated.timing(opacity, {toValue: 1, duration: 200, useNativeDriver: true, easing: Easing.out(Easing.cubic)}),
-        Animated.timing(translateY, {toValue: 0, duration: 200, useNativeDriver: true, easing: Easing.out(Easing.cubic)}),
+        Animated.timing(opacity, {
+          toValue: 1,
+          duration: 200,
+          useNativeDriver: true,
+          easing: Easing.out(Easing.cubic),
+        }),
+        Animated.timing(translateY, {
+          toValue: 0,
+          duration: 200,
+          useNativeDriver: true,
+          easing: Easing.out(Easing.cubic),
+        }),
       ]).start();
+
       AccessibilityInfo.announceForAccessibility?.(title || message || '');
     } else {
       Animated.parallel([
-        Animated.timing(opacity, {toValue: 0, duration: 180, useNativeDriver: true, easing: Easing.in(Easing.cubic)}),
-        Animated.timing(translateY, {toValue: 10, duration: 180, useNativeDriver: true, easing: Easing.in(Easing.cubic)}),
+        Animated.timing(opacity, {
+          toValue: 0,
+          duration: 180,
+          useNativeDriver: true,
+          easing: Easing.in(Easing.cubic),
+        }),
+        Animated.timing(translateY, {
+          toValue: 10,
+          duration: 180,
+          useNativeDriver: true,
+          easing: Easing.in(Easing.cubic),
+        }),
       ]).start();
     }
-  }, [visible, opacity, translateY, title, message]);
+  }, [visible, title, message]);
 
-  const bg = type === 'success' ? '#0FA958' : type === 'warning' ? '#E5A100' : '#D93C3C';
-  const icon = type === 'success' ? '✓' : type === 'warning' ? '!' : '✕';
+  const bg =
+    type === 'success' ? '#0FA958' :
+    type === 'warning' ? '#E5A100' :
+    '#D93C3C';
 
-  const containerStyle = onScreen
-    ? {position: 'absolute', left: 16, right: 16, top: topOffset, zIndex: 9999, elevation: 9999, opacity, transform: [{translateY}]}
-    : {position: 'absolute', left: 16, right: 16, top: topOffset, opacity, transform: [{translateY}]};
+  const icon =
+    type === 'success' ? '✓' :
+    type === 'warning' ? '!' :
+    '✕';
+
+  const containerStyle = {
+    position: 'absolute',
+    left: 16,
+    right: 16,
+    top: topOffset,
+    zIndex: onScreen ? 9999 : undefined,
+    elevation: onScreen ? 9999 : undefined,
+    opacity,
+    transform: [{translateY}],
+  };
 
   if (!visible && opacity.__getValue() === 0) return null;
 
@@ -68,11 +101,23 @@ const Toast = ({visible, type = 'success', title, message, onClose, topOffset = 
           }}>
           <Text style={{color: '#fff', fontWeight: '700'}}>{icon}</Text>
         </View>
+
         <View style={{flex: 1}}>
-          {!!title && <Text style={{color: '#fff', fontWeight: '700', fontSize: 15, marginBottom: message ? 2 : 0}}>{title}</Text>}
-          {!!message && <Text style={{color: '#fff', fontSize: 13, opacity: 0.95}}>{message}</Text>}
+          {!!title && (
+            <Text style={{color: '#fff', fontWeight: '700', fontSize: 15}}>
+              {title}
+            </Text>
+          )}
+          {!!message && (
+            <Text style={{color: '#fff', fontSize: 13, opacity: 0.95}}>
+              {message}
+            </Text>
+          )}
         </View>
-        <Text style={{color: 'rgba(255,255,255,0.9)', marginLeft: 8, fontWeight: '600'}}>OK</Text>
+
+        <Text style={{color: 'rgba(255,255,255,0.9)', marginLeft: 8, fontWeight: '600'}}>
+          OK
+        </Text>
       </Pressable>
     </Animated.View>
   );
@@ -86,12 +131,6 @@ async function waitForPdfReady(url, {maxRetries = 5, delayMs = 1500} = {}) {
       const res = await fetch(url, {method: 'HEAD', headers: {Accept: 'application/pdf'}});
       const ct = res.headers?.get?.('content-type') || '';
       if (res.ok && ct.toLowerCase().includes('pdf')) return true;
-
-      if (res.ok && !ct) {
-        const probe = await fetch(url, {method: 'GET', headers: {Range: 'bytes=0-0', Accept: 'application/pdf'}});
-        const ct2 = probe.headers?.get?.('content-type') || '';
-        if (probe.ok && ct2.toLowerCase().includes('pdf')) return true;
-      }
     } catch {}
     await sleep(delayMs);
   }
@@ -101,20 +140,18 @@ async function waitForPdfReady(url, {maxRetries = 5, delayMs = 1500} = {}) {
 const InvoiceDrawer = ({onClose, isVisible, order}) => {
   const {t} = useTranslate();
   const insets = useSafeAreaInsets();
+
   const [isLoading, setIsLoading] = useState(false);
-  const [showSlump, setShowSlump] = useState(false);
-  const [slumpData, setSlumpData] = useState(null);
-  const [slumpLoading, setSlumpLoading] = useState(false);
-
-
-
   const [toast, setToast] = useState({visible: false, type: 'success', title: '', message: ''});
   const hideToastTimer = useRef();
 
   const showToast = (type, title, message, duration = 3500) => {
     if (hideToastTimer.current) clearTimeout(hideToastTimer.current);
     setToast({visible: true, type, title, message});
-    hideToastTimer.current = setTimeout(() => setToast((prev) => ({...prev, visible: false})), duration);
+    hideToastTimer.current = setTimeout(
+      () => setToast((prev) => ({...prev, visible: false})),
+      duration
+    );
   };
 
   const handleDownloadInvoice = async (invoiceId, db) => {
@@ -123,47 +160,48 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
       const userName = await getUserName();
       const userPsw = await getUserPsw();
       const base = await getBaseUrl();
+
       if (!invoiceId || !userName || !userPsw || !base) {
-        showToast('error', t('order_history_form.invoice_drawer.vat_invoice'), t('order_history_form.waybill_send_mail.open_error') || 'Could not open');
+        showToast(
+          'error',
+          t('order_history_form.invoice_drawer.vat_invoice'),
+          t('order_history_form.waybill_send_mail.open_error')
+        );
         return;
       }
 
-      const ts = Date.now();
-      const pdfUrl = `${base}/getInvoice&f_id=${invoiceId}&db=${db}&user=${userName}&psw=${userPsw}&ts=${ts}`;
+      const pdfUrl = `${base}/getInvoice&f_id=${invoiceId}&db=${db}&user=${userName}&psw=${userPsw}&ts=${Date.now()}`;
 
-      const ready = await waitForPdfReady(pdfUrl, {maxRetries: 5, delayMs: 1500});
+      const ready = await waitForPdfReady(pdfUrl);
       if (!ready) {
-        showToast('error', t('order_history_form.invoice_drawer.vat_invoice'), t('order_history_form.waybill_send_mail.open_error') || 'Could not open');
+        showToast(
+          'error',
+          t('order_history_form.invoice_drawer.vat_invoice'),
+          t('order_history_form.waybill_send_mail.open_error')
+        );
         return;
       }
 
       await openFileLink(pdfUrl);
-      showToast('success', t('order_history_form.invoice_drawer.vat_invoice'), t('order_history_form.waybill_send_mail.open_success') || 'Opened successfully');
+      showToast(
+        'success',
+        t('order_history_form.invoice_drawer.vat_invoice'),
+        t('order_history_form.waybill_send_mail.open_success')
+      );
     } catch {
-      showToast('error', t('order_history_form.invoice_drawer.vat_invoice'), t('order_history_form.waybill_send_mail.open_error') || 'Could not open');
+      showToast(
+        'error',
+        t('order_history_form.invoice_drawer.vat_invoice'),
+        t('order_history_form.waybill_send_mail.open_error')
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
-  useEffect(() => () => hideToastTimer.current && clearTimeout(hideToastTimer.current), []);
-
-
-    const handleOpenSlump = async () => {
-      try {
-        setSlumpLoading(true);  // ⬅️ BAŞLA
-
-        const result = await API.getSlumpMobile(order?.id, order?.db);
-
-        setSlumpData(result);
-        setShowSlump(true);
-      } catch (e) {
-        console.log("❌ Slump API error:", e);
-      } finally {
-        setSlumpLoading(false); // ⬅️ BİTİR
-      }
-    };
-
+  useEffect(() => {
+    return () => hideToastTimer.current && clearTimeout(hideToastTimer.current);
+  }, []);
 
   return (
     <BottomDrawerWithOverlay isVisible={isVisible} onClose={onClose}>
@@ -176,48 +214,18 @@ const InvoiceDrawer = ({onClose, isVisible, order}) => {
         onScreen
         topOffset={Math.max(insets.top, 10) + 8}
       />
+
       <View style={styles.container}>
-       <View style={styles.innerContainer}>
-
-         <Button
-           variant="outlined"
-           label={t('order_history_form.invoice_drawer.vat_invoice')}
-           Icon={DownloadSvg}
-           onPress={() => handleDownloadInvoice(order?.invoiceId, order?.db)}
-           loading={isLoading}
-           buttonStyle={{justifyContent: 'center', marginBottom: 14}}
-         />
-
-        <Button
-          variant="outlined"
-          label={t('order_history_form.invoice_drawer.slump_graph')}
-          Icon={SlumpGraphSvg}
-          onPress={handleOpenSlump}
-          loading={slumpLoading}
-          buttonStyle={{justifyContent: 'center', marginBottom: 14}}
-        />
-
-
-
-            <SlumpGraphModal
-              visible={showSlump}
-              onClose={() => setShowSlump(false)}
-               title={t('order_history_form.invoice_drawer.slump_graph')}
-            >
-            {slumpData && (
-              <SlumpGraph
-                data={slumpData.predicted_points}
-                deliveryTime={slumpData.delivery_time}
-              />
-            )}
-
-            </SlumpGraphModal>
-
-
-
-
-       </View>
-
+        <View style={styles.innerContainer}>
+          <Button
+            variant="outlined"
+            label={t('order_history_form.invoice_drawer.vat_invoice')}
+            Icon={DownloadSvg}
+            onPress={() => handleDownloadInvoice(order?.invoiceId, order?.db)}
+            loading={isLoading}
+            buttonStyle={{justifyContent: 'center', marginBottom: 14}}
+          />
+        </View>
       </View>
     </BottomDrawerWithOverlay>
   );
