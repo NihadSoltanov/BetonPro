@@ -127,6 +127,13 @@
   },
     "order_history_form":{
       "statistics":"Statistika",
+      "delivery_item": {
+        "at_plant": "Gamykloje",
+        "on_site": "Objekte",
+        "temperature": "Temperatūra",
+        "slump": "Slankumas"
+      },
+
       "no_pending_order":"Šiuo metu neturite laukiančių užsakymų.",
       "invoice_drawer":{
       "vat_invoice":"PVM sąskaita faktūra",

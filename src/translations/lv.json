@@ -127,6 +127,13 @@
   },
   "order_history_form":{
     "statistics":"Statistika",
+
+    "delivery_item":{
+      "at_plant":"Rūpnīcā",
+      "on_site":"Objektā",
+      "temperature":"Temperatūra",
+      "slump":"Sabrukums"
+    },
     "no_pending_order":"Šiuo metu neturite įvykusių užsakymų.",
     "invoice_drawer":{
     "vat_invoice":"PVM Sąskaita-faktūra",

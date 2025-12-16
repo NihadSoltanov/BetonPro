@@ -52,6 +52,31 @@ const styles = StyleSheet.create({
   noBorder: {
     borderColor: COLORS.white,
   },
+  measurementsContainer: {
+    marginTop: 6,
+    marginLeft: 12, // SigningPill ile hizalı
+    paddingTop: 6,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E5E5',
+  },
+  measurementsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  measurementsBlock: {
+    flex: 1,
+  },
+  measurementsTitle: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: '#555',
+    marginBottom: 2,
+  },
+  measurementsText: {
+    fontSize: 11,
+    color: '#555',
+  },
+
 });
 
 export default styles;

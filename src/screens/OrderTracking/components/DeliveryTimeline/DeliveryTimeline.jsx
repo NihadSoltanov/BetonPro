@@ -1,16 +1,18 @@
-import React, {useState} from 'react';
-import {SectionList, View} from 'react-native';
-import styles from './DeliveryTimeline.styles';
-import {TimelineHeader, TimelineItem} from './components';
-import {Drawer} from './components/Drawer/Drawer';
+import React, { useState } from 'react';
+import { SectionList, View } from 'react-native';
 
-function DeliveryTimeline({timelineData, onSignCallback}) {
+import styles from './DeliveryTimeline.styles';
+import { TimelineHeader, TimelineItem } from './components';
+import { Drawer } from './components/Drawer/Drawer';
+
+function DeliveryTimeline({ timelineData, onSignCallback }) {
   const [focusdDelivery, setFocusedDelivery] = useState(null);
+
   return (
     <View style={styles.container}>
       <SectionList
         sections={timelineData}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <TimelineItem
             title={item.licensePlate}
             amount={item.amount}
@@ -27,9 +29,11 @@ function DeliveryTimeline({timelineData, onSignCallback}) {
               })
             }
             isGpsTracked={item.isGpsTracked}
+            plant={item.plant}
+            onSite={item.onSite}
           />
         )}
-        renderSectionHeader={({section}) => (
+        renderSectionHeader={({ section }) => (
           <TimelineHeader
             title={section.title}
             amount={section.amount}
@@ -40,6 +44,7 @@ function DeliveryTimeline({timelineData, onSignCallback}) {
           return `basicListEntry-${item.id}`;
         }}
       />
+
       <Drawer
         isVisible={!!focusdDelivery}
         onClose={() => {
@@ -54,4 +59,4 @@ function DeliveryTimeline({timelineData, onSignCallback}) {
   );
 }
 
-export {DeliveryTimeline};
+export { DeliveryTimeline };

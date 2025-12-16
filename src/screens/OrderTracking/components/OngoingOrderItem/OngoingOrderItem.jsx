@@ -32,8 +32,6 @@ function OngoingOrderItem({
   const { t } = useTranslate();
   const { navigate } = useNavigation();
   const [isEditVisible, setIsEditVisible] = useState(false);
-  const [slumpData, setSlumpData] = useState(null);
-  const [slumpLoading, setSlumpLoading] = useState(false);
 
   const { ongoingOrder, isLoadingOrder, getOngoingOrder } = useOngoingOrder(
     item.id,
@@ -59,28 +57,7 @@ function OngoingOrderItem({
 
     navigate(ROUTES.MAP_TRACKING, params);
   }, [navigate, ongoingOrder, item.id, item.db]);
- const loadSlump = useCallback(async () => {
-   try {
-     setSlumpLoading(true);
 
-     const result = await API.getSlumpMobile(item?.id, item?.db);
-     console.log("✅ SLUMP RESULT:", result);
-
-     setSlumpData(result);
-   } catch (e) {
-     console.log('❌ Slump API error:', e);
-   } finally {
-     setSlumpLoading(false);
-   }
- }, [item?.id, item?.db]);
-useEffect(() => {
-  if (isOpen) {
-    loadSlump();
-  } else {
-    setSlumpData(null);
-    setSlumpLoading(false);
-  }
-}, [isOpen, loadSlump]);
 
   const onEditPress = () => {
     setIsEditVisible(true);
@@ -198,25 +175,6 @@ useEffect(() => {
         <View style={styles.loaderContainer}>
           <Loader size="large" />
         </View>
-      )}
-      {/* ✅ SLUMP GRAPH — KART AÇILINCA ALTTA GÖSTER */}
-      {isOpen && (
-        <>
-          {slumpLoading && (
-            <View style={{ marginTop: 16 }}>
-              <Loader size="small" />
-            </View>
-          )}
-
-          {!slumpLoading && slumpData && (
-            <View style={{ marginTop: 16 }}>
-              <SlumpGraph
-                data={slumpData.predicted_points}
-                deliveryTime={slumpData.delivery_time}
-              />
-            </View>
-          )}
-        </>
       )}
 
       <View style={styles.editButtonContainer}>

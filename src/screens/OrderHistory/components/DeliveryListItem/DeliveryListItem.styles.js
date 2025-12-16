@@ -45,6 +45,13 @@ const styles = StyleSheet.create({
   rootContainer: {
     marginTop: SPACING.sm,
   },
+  measureText: {
+    fontFamily: FONTS.regular,
+    fontSize: FONT_SIZE.text.xxs,
+    color: COLORS.grey,
+    marginTop: 2,
+  },
+
 });
 
 export default styles;

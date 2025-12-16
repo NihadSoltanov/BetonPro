@@ -129,6 +129,12 @@
 
   "order_history_form":{
     "statistics":"Statistics",
+    "delivery_item": {
+      "at_plant": "At plant",
+      "on_site": "On site",
+      "temperature": "Temp",
+      "slump": "Slump"
+    },
     "no_pending_order":"You currently have no pending orders.",
     "invoice_drawer":{
     "vat_invoice":"VAT Invoice",

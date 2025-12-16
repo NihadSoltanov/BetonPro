@@ -323,6 +323,14 @@ const createDeliveryDatasetForTimeline = (order) => {
         id: delivery.id,
         db: delivery.db,
         isGpsTracked: !!delivery.tikslas_id,
+        plant: {
+           temperature: delivery.plant?.temperature ?? null,
+           slump: delivery.plant?.slump ?? null,
+         },
+        onSite: {
+            temperature: delivery.onSite?.temperature ?? null,
+           slump: delivery.onSite?.slump ?? null,
+          },
       });
     }
   });
@@ -666,6 +674,15 @@ const mapOrdersResponse = (response) => {
           x: delivery.x,
           y: delivery.y,
           signed: delivery.signed,
+           plant: {
+              temperature: delivery.plant?.temperature ?? null,
+              slump: delivery.plant?.slump ?? null,
+            },
+            onSite: {
+              temperature: delivery.onSite?.temperature ?? null,
+              slump: delivery.onSite?.slump ?? null,
+            },
+
           isCarWithPump: delivery.pump === '1',
           deliveryStart: delivery.salytis,
           deliveryEnd: delivery.delivery_time,
